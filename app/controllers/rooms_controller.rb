@@ -36,8 +36,7 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    # TODO: remove destoryed current room from all users
-    current_user.acquired_rooms.find(params[:id]).destroy
+    Rooms::Destroyer.new(owner: current_user, room: room).call
     head :no_content
   end
 
