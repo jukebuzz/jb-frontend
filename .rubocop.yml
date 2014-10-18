@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - app/admin/**/*
+LineLength:
+  Max: 120
+MethodLength:
+  Max: 20
+Documentation:
+  Enabled: false
