@@ -15,8 +15,6 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 group :development do
-  gem 'sqlite3'
-
   # Local configuration
   gem 'dotenv-rails'
 
