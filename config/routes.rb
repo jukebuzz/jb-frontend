@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         post :join
       end
       member do
+        post :switch
         delete :left
       end
     end
