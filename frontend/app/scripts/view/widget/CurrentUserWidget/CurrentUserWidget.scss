@@ -14,7 +14,18 @@
       height: 70px;
     }
 
+    &__close{
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      font-size: 15px;
+      &:hover{
+        color: #fff;
+      }
+    }
+
     &__avatar{
+      background-color: #fff;
       float: left;
       margin-right: 10px;
       line-height: 100px;
