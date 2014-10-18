@@ -1,5 +1,5 @@
 class RoomCreator
-  attr_reader :owner, :room_name, :room
+  attr_reader :owner, :name, :room
 
   def initialize(options)
     options.each do |k, v|
@@ -7,11 +7,9 @@ class RoomCreator
     end
   end
 
-  def call!
-    ActiveRecord::Base.transaction do
-      @room = Room.create! name: room_name, owner: owner
-      Membership.create!(user: owner, room: room)
-    end
+  def call
+    @room = Room.create name: name, owner: owner
+    room.persisted? && Membership.create(user: owner, room: room)
 
     room
   end
