@@ -8,8 +8,11 @@ define (require, exports, module)->
     defaults:
       name: ""
       email: ""
-      avatar: ""
+      avatar_url: ""
       coins: 0
+
+    computeds:
+      avatar_url_mini: -> (@get 'avatar_url') + "&s=50"
 
     refresh: ->
       common.api.get_current_user().done (data)=> @set data
