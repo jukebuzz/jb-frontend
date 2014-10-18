@@ -16,13 +16,13 @@ class RoomsController < ApplicationController
   end
 
   def join
-    # TODO: move to service
-    @room = Room.find_by! join_room_params
+    membership = Rooms::Joiner.new(user: current_user, room: join_room).call
 
-    membership = Membership.new(user: current_user, room: @room)
-    !membership.save && fail(BadRequest, membership.errors.messages)
-
-    render :show
+    if membership.persisted?
+      render :show, status: :created
+    else
+      fail BadRequest, membership.errors.messages
+    end
   end
 
   def left
@@ -42,8 +42,12 @@ class RoomsController < ApplicationController
 
   private
 
+  def join_room
+    @room ||= Room.find_by! join_room_params
+  end
+
   def room
-    @room ||= Room.find(params[:id])
+    @room ||= Room.find params[:id]
   end
 
   def room_params
