@@ -1,9 +1,9 @@
 AllCops:
   Exclude:
-    - bin/**/*
-    - db/**/*
-    - config/**/*
     - app/admin/**/*
+    - bin/**/*
+    - config/**/*
+    - db/**/*
     - frontend/**/*
 LineLength:
   Max: 120
