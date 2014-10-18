@@ -16,7 +16,7 @@ define (require, exports, module)->
       '@ui.before': 'text: before'
 
     events:
-      'click @ui.name': 'onClickName'
+      'click': 'onClick'
 
     computeds:
       before:
@@ -25,7 +25,7 @@ define (require, exports, module)->
           console.log is_mine
           if is_mine then '@' else '#'
 
-    onClickName: ->
+    onClick: ->
       @model.set {active: true}
 
 
