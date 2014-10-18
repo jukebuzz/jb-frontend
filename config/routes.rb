@@ -9,5 +9,11 @@ Rails.application.routes.draw do
         get :current
       end
     end
+
+    resources :rooms, only: [:index, :create] do
+      collection do
+        post :join
+      end
+    end
   end
 end
