@@ -26,15 +26,12 @@ class RoomsController < ApplicationController
   end
 
   def left
-    # TODO: remove lefted room from user's current
-    RoomLefter.new(member: current_user, room: room).call
-
+    Rooms::Leaver.new(member: current_user, room: room).call
     head :no_content
   end
 
   def switch
     Rooms::Switcher.new(user: current_user, room: room).call
-
     head :no_content
   end
 
