@@ -43,4 +43,5 @@ group :production do
   gem 'pg'
   gem 'unicorn'
   gem 'newrelic_rpm'
+  gem 'rails_12factor'
 end
