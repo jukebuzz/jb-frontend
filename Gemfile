@@ -23,20 +23,19 @@ group :development do
 
   # Debuging and profiling
   gem 'awesome_print'
-  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'letter_opener'
 
   # Code styling
-  gem 'rubocop'
+  gem 'rubocop', require: false
 
   # Guards
-  gem 'guard'
-  gem 'guard-annotate'
-  gem 'guard-rubocop'
-  gem 'guard-bundler'
+  gem 'guard', require: false
+  gem 'guard-annotate', require: false
+  gem 'guard-rubocop', require: false
+  gem 'guard-bundler', require: false
 end
 
 group :production do
