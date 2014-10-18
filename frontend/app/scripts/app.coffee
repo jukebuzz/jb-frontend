@@ -9,7 +9,7 @@ define (require, exports, module)->
   Widget = require "view/widget"
 
   #GAConstructor = require "sp-utils-gaconstructor"
-  #UserModel = require "model/UserModel"
+  UserModel = require "model/UserModel"
   #social = require "packages/social"
 
   $ = Backbone.$
@@ -20,7 +20,8 @@ define (require, exports, module)->
       common.api = new ServerApi
 
       # Init UserModel
-      #common.user = new UserModel
+      common.user = new UserModel
+      common.user.refresh()
 
       # Init google analitics
       #common.ga = new GAConstructor preprocess.GA, Backbone

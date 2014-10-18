@@ -1,6 +1,7 @@
 define (require, exports, module)->
   Layout = require "../_Layout"
   Backbone = require "backbone"
+  CurrentUserWidget = require "view/widget/CurrentUserWidget/CurrentUserWidget"
   common = require 'common'
   require 'epoxy'
 
@@ -16,6 +17,14 @@ define (require, exports, module)->
     onRoute: (route)-> @set {show:+(route in @showOn)}
 
   class NavigationLayout extends Layout
+
+    regions:
+      user:
+        el: '[data-view-user]'
+        view: CurrentUserWidget
+
+
+
     bindings:
       ":el": "classes: {visible: show}"
 

@@ -1,0 +1,27 @@
+.currentuser_widget{
+  .user{
+    padding: 10px;
+    &__name{
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    &__info{
+      float: left;
+      width: 150px;
+      height: 100px;
+    }
+
+    &__avatar{
+      float: left;
+      margin-right: 10px;
+      line-height: 100px;
+      display: inline-block;
+      border-radius: 999px;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+}
