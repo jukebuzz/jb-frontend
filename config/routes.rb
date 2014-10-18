@@ -18,5 +18,14 @@ Rails.application.routes.draw do
         delete :left
       end
     end
+
+    resources :playlists, only: :none do
+      resources :items, controller: 'playlist_items', only: [:index, :create, :destroy] do
+        member do
+          post :move_up
+          post :move_down
+        end
+      end
+    end
   end
 end

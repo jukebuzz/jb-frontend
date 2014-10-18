@@ -2,12 +2,13 @@
 #
 # Table name: rooms
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  join_token :string(255)
-#  owner_id   :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  join_token     :string(255)
+#  owner_id       :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  playlist_items :integer          default([]), is an Array
 #
 # Indexes
 #
