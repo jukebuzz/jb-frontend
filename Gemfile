@@ -14,6 +14,9 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-github'
 
+# External APIs
+gem 'soundcloud'
+
 group :development do
   # Local configuration
   gem 'dotenv-rails'
