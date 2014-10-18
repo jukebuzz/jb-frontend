@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
-    @user = User.find_or_create_with_omniauth auth
+    @user = Users::Creator.new(auth: auth).call
     sign_in @user
 
     redirect_to '/auth_success.html'
