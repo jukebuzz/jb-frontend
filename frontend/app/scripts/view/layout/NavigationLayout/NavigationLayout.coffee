@@ -2,6 +2,7 @@ define (require, exports, module)->
   Layout = require "../_Layout"
   Backbone = require "backbone"
   CurrentUserWidget = require "view/widget/CurrentUserWidget/CurrentUserWidget"
+  RoomList = require "view/list/RoomList/RoomList"
   common = require 'common'
   require 'epoxy'
 
@@ -22,6 +23,9 @@ define (require, exports, module)->
       user:
         el: '[data-view-user]'
         view: CurrentUserWidget
+      rooms:
+        el: '[data-view-rooms]'
+        view: RoomList
 
 
 

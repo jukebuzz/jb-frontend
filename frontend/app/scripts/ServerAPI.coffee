@@ -21,3 +21,9 @@ define ["sp-utils-serverclient"],(ServerClient)->
             coins: 200
           }
       }
+
+    get_rooms: ->
+      @get {
+        url:"/api/rooms"
+        stub:(async)-> async.resolve []
+      }

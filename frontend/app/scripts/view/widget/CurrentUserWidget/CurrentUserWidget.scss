@@ -1,5 +1,6 @@
 .currentuser_widget{
   .user{
+    @extend .clearfix;
     padding: 10px;
     &__name{
       font-size: 20px;
@@ -10,7 +11,7 @@
     &__info{
       float: left;
       width: 150px;
-      height: 100px;
+      height: 70px;
     }
 
     &__avatar{
