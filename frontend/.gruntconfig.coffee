@@ -14,6 +14,11 @@ module.exports =
     params:{}
 
   copy:[
+    'app/styles/fonts/fontawesome-webfont.eot': 'app/bower_components/font-awesome/fonts/fontawesome-webfont.eot'
+    'app/styles/fonts/fontawesome-webfont.svg': 'app/bower_components/font-awesome/fonts/fontawesome-webfont.svg'
+    'app/styles/fonts/fontawesome-webfont.ttf': 'app/bower_components/font-awesome/fonts/fontawesome-webfont.ttf'
+    'app/styles/fonts/fontawesome-webfont.woff': 'app/bower_components/font-awesome/fonts/fontawesome-webfont.woff'
+
   #  expand: true
   #  cwd: "/bower_components/owl-carousel/owl-carousel/"
   #  src: "owl.carousel.css"

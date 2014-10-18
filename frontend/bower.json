@@ -14,7 +14,8 @@
     "sp-utils-gaconstructor": "~0.0.6",
     "sp-utils-bootstrapmodal": "~0.0.7",
     "sp-utils-paginatecollection": "~0.0.1",
-    "bootstrap-sass-official": "~3.2.0"
+    "bootstrap-sass-official": "~3.2.0",
+    "font-awesome": "~4.2.0"
   },
   "devDependencies": {},
   "resolutions": {

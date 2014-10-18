@@ -1,4 +1,14 @@
 .room_list{
+  .add{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    &:hover{
+      color: #fff;
+
+    }
+  }
+
   .title{
     text-transform: uppercase;
     padding-left: 10px;
