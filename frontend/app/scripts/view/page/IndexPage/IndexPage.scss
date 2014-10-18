@@ -1,7 +1,19 @@
 .index_page{
   background-color: #eee;
+  background-image: url(../images/index/bg.jpg);
+  background-size: cover;
+  height: 100%;
   color: $color2;
+  color: #200605;
   padding-top: 70px;
+
+  .frosty{
+    background-color: rgba(255,255,255,0.85);
+    width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+
   h1 {
     font-size: 60px;
     font-weight: normal;
@@ -16,7 +28,7 @@
   }
 
   .logo{
-    @extend .img_index_logo;
+    @extend .img_index_logo-black;
     margin: 0 auto;
   }
 
@@ -29,6 +41,9 @@
     color: #fff;
     background-color: $color1;
     margin: 20px auto;
+    border-radius: 0;
+
+    border: 1px solid darken($color1, 10%);
     &:hover{
       background-color: lighten($color1, 5%);
       color: #fff;
