@@ -1,7 +1,7 @@
 define (require, exports, module)->
   _List = require "../_List"
   TrackItem = require "../TrackItem/TrackItem"
-  TrackCollection = require "collection/TrackCollection"
+
 
   TrackList = _List.extend
     template: "#TrackList"
@@ -10,7 +10,7 @@ define (require, exports, module)->
       ":el": "collection: $collection"
     itemView: TrackItem
     initialize: ->
-      @collection = new TrackCollection
+      @collection = common.trackCollection
       @collection.view = @itemView #if use backbone.epoxy < 1.2
 
     setRoom: (id)->

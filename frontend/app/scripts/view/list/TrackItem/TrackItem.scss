@@ -9,6 +9,7 @@
     }
     .track_item__albumart{
       height: 76px;
+      width: 76px;
     }
     .buzz{
       margin-top: 25px;
@@ -24,6 +25,8 @@
   &__info{
   }
   &__albumart{
+    background-color: $color-white;
+    width: 49px;
     height: 49px;
     float:left;
   }

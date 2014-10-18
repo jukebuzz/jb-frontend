@@ -8,6 +8,7 @@ define (require, exports, module)->
   Page = require "view/page"
   Widget = require "view/widget"
   audio = require "utils/audio"
+  TrackCollection = require "collection/TrackCollection"
 
   #GAConstructor = require "sp-utils-gaconstructor"
   UserModel = require "model/UserModel"
@@ -24,6 +25,7 @@ define (require, exports, module)->
       common.user = new UserModel
       common.user.refresh()
       common.audio = audio
+      common.trackCollection = new TrackCollection {autoRefresh: true}
       audio.done (player)->
         # player.load 'https://api.soundcloud.com/tracks/291/stream?client_id=e90b73852966e0f8a83b4c4e39d90ab5'
         # player.play()

@@ -6,8 +6,15 @@ define (require, exports, module)->
   TrackCollection = Backbone.Collection.extend
     model: TrackModel
 
-    refresh: (id)->
+
+    initialize: ({@autoRefresh})->
+      if @autoRefresh
+        @interval = setInterval (_.bind @refresh, this), 10000
+
+    refresh: (id=@room_id)->
+      return unless id?
       common.api.get_playlist_id_items(id).done (data)=>
+        @room_id = id
         @remove @models
         @add data, {parse: true}
 
