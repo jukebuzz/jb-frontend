@@ -5,13 +5,14 @@
   height: 100%;
   color: $color2;
   color: #200605;
-  padding-top: 70px;
+  overflow: auto;
 
   .frosty{
     background-color: rgba(255,255,255,0.85);
     width: 500px;
     margin: 0 auto;
     padding: 30px;
+    margin-top: 30px;
   }
 
   h1 {
