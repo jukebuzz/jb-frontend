@@ -11,7 +11,7 @@ module ErrorHandler
   class ApiError < StandardError
     attr_reader :message
 
-    def initialize(message)
+    def initialize(message = nil)
       @message = message
     end
   end
