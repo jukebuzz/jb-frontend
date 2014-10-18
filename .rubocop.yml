@@ -1,8 +1,10 @@
 AllCops:
   Exclude:
+    - bin/**/*
     - db/**/*
     - config/**/*
     - app/admin/**/*
+    - frontend/**/*
 LineLength:
   Max: 120
 MethodLength:
