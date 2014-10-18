@@ -16,7 +16,7 @@
 
 class Room < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
 
   validates :owner, :name, presence: true

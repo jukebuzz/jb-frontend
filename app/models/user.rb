@@ -13,8 +13,9 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :rooms, through: :memberships
+  has_many :acquired_rooms, class_name: 'Room', foreign_key: 'owner_id', dependent: :destroy
 
   validates :uid, presence: true, uniqueness: true
 
