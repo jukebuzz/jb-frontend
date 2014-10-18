@@ -1,12 +1,6 @@
 module Rooms
-  class Creator
+  class Creator < Service
     attr_reader :owner, :name, :room
-
-    def initialize(options)
-      options.each do |k, v|
-        instance_variable_set "@#{k}", v
-      end
-    end
 
     def call
       @room = Room.create name: name, owner: owner

@@ -1,12 +1,6 @@
 module Rooms
-  class Switcher
+  class Switcher < Service
     attr_reader :user
-
-    def initialize(options)
-      options.each do |k, v|
-        instance_variable_set "@#{k}", v
-      end
-    end
 
     def call
       user.update_attributes active_room: room
