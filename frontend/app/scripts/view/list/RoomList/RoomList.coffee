@@ -35,6 +35,7 @@ define (require, exports, module)->
     onCollectionChangeActive: (model, value)->
       return unless value
       id = model.get 'id'
+      common.api.post_rooms_id_switch id
       common.router.navigate "!/rooms/#{id}", {trigger: true}
 
     onRoute: (id)->

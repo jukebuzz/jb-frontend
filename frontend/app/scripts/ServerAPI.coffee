@@ -68,3 +68,13 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
         url: '/api/rooms/join'
         data
       }
+
+    post_rooms_id_switch: (id)->
+      @post {
+        url: "/api/rooms/#{id}/switch"
+      }
+
+    get_playlist_id_items: (id)->
+      @get {
+        url: "/api/playlists/#{id}/items"
+      }

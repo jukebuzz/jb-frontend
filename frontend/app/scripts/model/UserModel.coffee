@@ -10,6 +10,7 @@ define (require, exports, module)->
       email: ""
       avatar_url: ""
       coins: 0
+      active_room_id: 0
 
     computeds:
       avatar_url_mini: -> (@get 'avatar_url') + "&s=50"

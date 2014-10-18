@@ -25,8 +25,7 @@ define [
 
     routes:
       "":"index"
-      "!/rooms": "rooms"
-      "!/rooms/:id": "rooms"
+      "!/rooms(/:id)": "rooms"
       "!/roomadd/:token": "roomAdd"
       "!/404": "error404"
       "*default":"default_router"
@@ -35,7 +34,10 @@ define [
       view = showPage Page.IndexPage
 
     rooms: middleware.wrap (id)->
+      id = common.user.get 'active_room_id' unless id?
+      @navigate "!/rooms/#{id}"
       view = showPage Page.MainPage
+      view.setRoom id if id?
 
     roomAdd: middleware.wrap (token)->
       common.api.post_rooms_join(token).done (data)->
