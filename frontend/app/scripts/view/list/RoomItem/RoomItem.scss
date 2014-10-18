@@ -18,12 +18,14 @@
     display: inline-block;
   }
   .trash,
-  .edit{
+  .edit,
+  .share{
     display: none;
   }
   &:hover{
     .trash,
-    .edit.visible{
+    .edit.visible,
+    .share.visible{
       color: $color2;
       padding: 4px;
       display: inline-block;

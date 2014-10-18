@@ -15,6 +15,12 @@ define (require, exports, module)->
       is_mine:
         deps: ['owner_id']
         get: (owner_id)-> +owner_id is +(common.user.get 'id')
+      share_link:
+        deps: ['join_token']
+        get: (join_token)->
+          url = location.protocol + '//' + location.hostname + location.pathname
+          url += '#!/roomadd/' + join_token
+
 
     parse:(r)->
       r.owner_id = r.owner.id

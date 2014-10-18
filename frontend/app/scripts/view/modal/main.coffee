@@ -2,3 +2,4 @@
 define (require, exports, module)->
   AuthModal: require './AuthModal/AuthModal'
   ConfirmModal: require './ConfirmModal/ConfirmModal'
+  RoomShareModal: require './RoomShareModal/RoomShareModal'

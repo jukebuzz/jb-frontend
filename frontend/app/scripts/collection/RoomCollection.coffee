@@ -6,15 +6,21 @@ define (require, exports, module)->
   RoomCollection = Backbone.Collection.extend
     model: RoomModel
 
+    defSynced: null
+
     initialize: ->
       @listenTo this, 'change:active', @onChange
+      @defSynced = $.Deferred()
+
+    promiseSynced: -> @defSynced.promise()
 
     refresh: ->
       common.api.get_rooms()
       .done (data)=>
         @remove @models
         @add data, {parse: true}
-        @selectFirst()
+        @defSynced.resolve()
+        # @selectFirst()
 
     onChange: (model, value)->
       return unless value

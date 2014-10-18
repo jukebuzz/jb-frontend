@@ -27,15 +27,20 @@ define [
       "":"index"
       "!/rooms": "rooms"
       "!/rooms/:id": "rooms"
-      "!/roomsadd/:token": "roomAdd"
+      "!/roomadd/:token": "roomAdd"
       "!/404": "error404"
       "*default":"default_router"
 
     index: middleware.wrap ->
       view = showPage Page.IndexPage
 
-    rooms: middleware.wrap ->
+    rooms: middleware.wrap (id)->
       view = showPage Page.MainPage
+
+    roomAdd: middleware.wrap (token)->
+      common.api.post_rooms_join(token).done (data)->
+        Backbone.trigger "rooms:needUpdate"
+        common.router "!/rooms/#{data.id}", {trigger:true}
 
     error404: middleware.wrap ->
       showPage Page.Error404Page

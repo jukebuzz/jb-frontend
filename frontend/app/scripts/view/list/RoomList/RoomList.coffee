@@ -30,13 +30,17 @@ define (require, exports, module)->
       @collection.refresh()
       @listenTo  @collection,'change:active', @onCollectionChangeActive
       @listenTo Backbone, 'rooms:needUpdate', @onNeedUpdate
+      @listenTo common.router, 'route:rooms', @onRoute
 
     onCollectionChangeActive: (model, value)->
       return unless value
       id = model.get 'id'
       common.router.navigate "!/rooms/#{id}", {trigger: true}
 
-      # if @collection.
+    onRoute: (id)->
+      @collection.promiseSynced().done =>
+        item = @collection.findWhere {id: +id}
+        item.set {active: true} if item?
 
     onClickAdd: -> @r.add.setShow true
 

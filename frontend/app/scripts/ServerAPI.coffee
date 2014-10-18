@@ -61,3 +61,10 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
         type: "DELETE"
         url: "/api/rooms/#{id}/left"
       }
+
+    post_rooms_join: (join_token)->
+      data = room: {join_token}
+      @post {
+        url: '/api/rooms/join'
+        data
+      }
