@@ -1,0 +1,31 @@
+.roomadd_widget{
+  display: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  &__wrap{
+
+  }
+  &__input{
+    height: 25px;
+    border: none;
+    width: 200px;
+    border-radius: 3px;
+    &:focus{
+      outline: none;
+    }
+  }
+  &__button{
+    margin: 0;
+    padding: 6px;
+    margin-left: 20px;
+    background-color: $color2;
+    border-color: $color2;
+    line-height: 13px;
+    height: 13px;
+    vertical-align: top;
+    color: $color-white;
+    &:hover{
+      background-color: lighten($color2, 5%);
+    }
+  }
+}

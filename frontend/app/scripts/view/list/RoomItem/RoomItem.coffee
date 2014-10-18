@@ -22,7 +22,6 @@ define (require, exports, module)->
       before:
         deps: ['is_mine']
         get: (is_mine)->
-          console.log is_mine
           if is_mine then '@' else '#'
 
     onClick: ->

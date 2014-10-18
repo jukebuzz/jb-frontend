@@ -16,5 +16,6 @@ define (require, exports, module)->
         deps: ['owner_id']
         get: (owner_id)-> +owner_id is +(common.user.get 'id')
 
-    #parse:(r)->
-    #  r
+    parse:(r)->
+      r.owner_id = r.owner.id
+      r

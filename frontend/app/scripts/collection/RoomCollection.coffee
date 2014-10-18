@@ -13,7 +13,7 @@ define (require, exports, module)->
       common.api.get_rooms()
       .done (data)=>
         @remove @models
-        @add data
+        @add data, {parse: true}
         @selectFirst()
 
     onChange: (model, value)->
@@ -25,4 +25,7 @@ define (require, exports, module)->
       hasActive = (@where {active:true}).length > 0
       return if hasActive
       @at(0).set active: true
+
+
+    parse: (r)-> r.rooms
 
