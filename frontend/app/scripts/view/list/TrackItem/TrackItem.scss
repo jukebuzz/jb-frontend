@@ -1,0 +1,77 @@
+.track_item{
+  &.first{
+    font-size: 16px;
+    padding: 7px;
+    .track_item__title,
+    .track_item__duration{
+      height: 76px;
+      line-height: 76px;
+    }
+    .track_item__albumart{
+      height: 76px;
+    }
+    .buzz{
+      margin-top: 25px;
+      padding: 5px 8px;
+    }
+
+  }
+  font-size: 14px;
+  font-family: sans-serif;
+  @extend .clearfix;
+  padding: 2px 2px;
+  border-bottom: 1px solid #eee;
+  &__info{
+  }
+  &__albumart{
+    height: 49px;
+    float:left;
+  }
+  .track_item__title{
+    float: left;
+    height: 49px;
+    line-height: 49px;
+    white-space: nowrap;
+    max-width: 70%;
+    margin-left: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .track_item__duration{
+    height: 49px;
+    line-height: 49px;
+    float: right;
+    margin-right: 10px;
+    color: #aaa;
+  }
+  &:hover{
+    background-color: $color-white;
+    .track_item__duration{
+      display: none;
+    }
+    .buzz{
+      display: block;
+    }
+  }
+  .buzz{
+    display: none;
+    float: right;
+    font-variant: small-caps;
+    border: 1px solid;
+    padding: 3px 5px;
+    margin-right: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+    &:hover{
+      background-color: darken($color-white, 10%);
+    }
+  }
+  .artist{
+    font-weight: bold;
+    padding-right: 10px
+  }
+  .track{
+    padding-left: 10px;
+  }
+
+}

@@ -1,3 +1,23 @@
 .main_page{
-
+  position: absolute;
+  background-image: url(../images/index/bg.jpg);
+  background-size: cover;
+  left: 300px;
+  top: 0px;
+  bottom: 0;
+  right: 0;
+  &__playlist,
+  &__search{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+  }
+  &__playlist{
+    // background-color: red;
+    right: 0;
+  }
+  &__search{
+    background-color: rgba(213,206,255, 0.85);
+    left: 0;
+  }
 }
