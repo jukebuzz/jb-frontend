@@ -49,3 +49,15 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
         url: "/api/rooms"
         data
       }
+
+    delete_rooms_id: (id)->
+      @ajax {
+        type: "DELETE"
+        url: "/api/rooms/#{id}"
+      }
+
+    delete_rooms_id_left: (id)->
+      @ajax {
+        type: "DELETE"
+        url: "/api/rooms/#{id}/left"
+      }

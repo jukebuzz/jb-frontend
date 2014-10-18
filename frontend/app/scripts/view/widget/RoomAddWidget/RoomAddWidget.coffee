@@ -47,7 +47,7 @@ define (require, exports, module)->
       return unless /^[a-z0-9_]+$/.test name
       common.api.post_rooms({name}).done =>
         @reset()
-        @trigger "needUpdate"
+        Backbone.trigger "rooms:needUpdate"
 
     onKeypress: (e)-> @onClickAdd() if e.keyCode is 13
 

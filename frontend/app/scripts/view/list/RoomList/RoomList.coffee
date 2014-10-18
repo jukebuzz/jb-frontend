@@ -29,7 +29,7 @@ define (require, exports, module)->
       @collection.view = @itemView #if use backbone.epoxy < 1.2
       @collection.refresh()
       @listenTo  @collection,'change:active', @onCollectionChangeActive
-      @listenTo @r.add, 'needUpdate', @onNeedUpdate
+      @listenTo Backbone, 'rooms:needUpdate', @onNeedUpdate
 
     onCollectionChangeActive: (model, value)->
       return unless value

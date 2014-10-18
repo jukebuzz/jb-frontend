@@ -27,6 +27,7 @@ define [
       "":"index"
       "!/rooms": "rooms"
       "!/rooms/:id": "rooms"
+      "!/roomsadd/:token": "roomAdd"
       "!/404": "error404"
       "*default":"default_router"
 
