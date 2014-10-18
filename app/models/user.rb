@@ -9,8 +9,9 @@
 #  avatar_url :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  nickname   :string(255)
 #
 
 class User < ActiveRecord::Base
-  validates :name, :email, :uid, presence: true
+  validates :nickname, :email, :uid, presence: true
 end
