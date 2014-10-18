@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = RoomCreator.new(room_params).call
+    @room = Rooms::Creator.new(room_params).call
 
     if @room.persisted?
       render :show, status: :created
