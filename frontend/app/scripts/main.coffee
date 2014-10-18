@@ -29,6 +29,7 @@ require.config
     'bootstrap/tab':"#{VENDOR_PATH}/bootstrap-sass-official/assets/javascripts/bootstrap/tab"
     'bootstrap/tooltip':"#{VENDOR_PATH}/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip"
     'bootstrap/transition':"#{VENDOR_PATH}/bootstrap-sass-official/assets/javascripts/bootstrap/transition"
+    'cookies': "#{VENDOR_PATH}/cookies-js/dist/cookies.min"
   packages:[
     "view/layout"
     "view/widget"
