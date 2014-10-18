@@ -16,7 +16,8 @@
     "sp-utils-paginatecollection": "~0.0.1",
     "bootstrap-sass-official": "~3.2.0",
     "font-awesome": "~4.2.0",
-    "cookies-js": "~0.4.0"
+    "cookies-js": "~0.4.0",
+    "audio5js": "*"
   },
   "devDependencies": {},
   "resolutions": {

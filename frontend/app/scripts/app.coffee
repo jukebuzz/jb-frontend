@@ -7,6 +7,7 @@ define (require, exports, module)->
   Modal = require "view/modal"
   Page = require "view/page"
   Widget = require "view/widget"
+  audio = require "utils/audio"
 
   #GAConstructor = require "sp-utils-gaconstructor"
   UserModel = require "model/UserModel"
@@ -22,6 +23,10 @@ define (require, exports, module)->
       # Init UserModel
       common.user = new UserModel
       common.user.refresh()
+      common.audio = audio
+      audio.done (player)->
+        # player.load 'https://api.soundcloud.com/tracks/291/stream?client_id=e90b73852966e0f8a83b4c4e39d90ab5'
+        # player.play()
 
       # Init google analitics
       #common.ga = new GAConstructor preprocess.GA, Backbone
@@ -31,6 +36,7 @@ define (require, exports, module)->
       #  vk: new social.VKApi preprocess.social.vk.appID
       #  fb: new social.FBApi preprocess.social.fb.appID
       #  ok: new social.OKApi preprocess.social.ok.appID, preprocess.social.ok.appKey
+
 
     start:->
       layout = {}

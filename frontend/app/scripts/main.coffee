@@ -30,6 +30,7 @@ require.config
     'bootstrap/tooltip':"#{VENDOR_PATH}/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip"
     'bootstrap/transition':"#{VENDOR_PATH}/bootstrap-sass-official/assets/javascripts/bootstrap/transition"
     'cookies': "#{VENDOR_PATH}/cookies-js/dist/cookies.min"
+    'audio5js': "#{VENDOR_PATH}/audio5js/audio5"
   packages:[
     "view/layout"
     "view/widget"
