@@ -10,8 +10,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
-group :developmnet do
+# Auth
+gem 'omniauth'
+gem 'omniauth-github'
+
+group :development do
   gem 'sqlite3'
+
+  # Local configuration
+  gem 'dotenv-rails'
 
   # Annotate models
   gem 'annotate'
