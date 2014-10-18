@@ -7,7 +7,7 @@ class PlaylistItemsController < ApplicationController
   end
 
   def create
-    playlist_manager.append_soundcloud_track(track_params[:soundcloud_id])
+    playlist_manager.append_soundcloud_track(track_params[:soundcloud_id].to_s)
 
     render :index
   end
