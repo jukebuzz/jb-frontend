@@ -13,7 +13,11 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :memberships
+  has_many :rooms, through: :memberships
+
   validates :nickname, :email, :uid, presence: true
+  validates :uid, uniqueness: true
 
   def self.find_or_create_with_omniauth(auth)
     find_or_create_by uid: auth['uid'] do |user|
