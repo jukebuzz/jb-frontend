@@ -1,7 +1,37 @@
 .index_page{
+  background-color: #eee;
+  color: #ff8c00;
   h1 {
     font-size: 60px;
+    font-weight: normal;
     line-height: 1;
     letter-spacing: -1px;
+    text-align: center;
+    margin: 0.33em 0;
+  }
+  .slogan{
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .logo{
+    @extend .img_index_logo;
+    margin: 0 auto;
+  }
+
+  &__button{
+    $bgc: #04756F;
+    font-size: 20px;
+    display: block;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    background-color: $bgc;
+    margin: 20px auto;
+    &:hover{
+      background-color: lighten($bgc, 5%);
+      color: #fff;
+    }
   }
 }

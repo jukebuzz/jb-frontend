@@ -6,8 +6,3 @@ define (require, exports, module)->
     template:"#IndexPage"
     className:"index_page"
 
-    events:
-      "click":"onClick"
-
-    onClick:->
-     (new AuthModal).showModal()
