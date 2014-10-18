@@ -24,6 +24,18 @@ class RoomsController < ApplicationController
     render :show
   end
 
+  def left
+    @room = Room.find(params[:id])
+    RoomLefter.new(member: current_user, room: @room).call
+
+    head :no_content
+  end
+
+  def destroy
+    current_user.acquired_rooms.find(params[:id]).destroy
+    head :no_content
+  end
+
   private
 
   def room_params

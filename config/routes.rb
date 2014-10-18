@@ -10,9 +10,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :rooms, only: [:index, :create] do
+    resources :rooms, only: [:index, :create, :destroy] do
       collection do
         post :join
+      end
+      member do
+        delete :left
       end
     end
   end
