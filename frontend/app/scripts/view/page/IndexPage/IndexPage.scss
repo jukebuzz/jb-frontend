@@ -1,6 +1,6 @@
 .index_page{
   background-color: #eee;
-  color: #ff8c00;
+  color: $color2;
   padding-top: 70px;
   h1 {
     font-size: 60px;
@@ -21,17 +21,16 @@
   }
 
   &__button{
-    $bgc: #04756F;
     font-size: 20px;
     display: block;
     width: 250px;
     height: 40px;
     line-height: 40px;
     color: #fff;
-    background-color: $bgc;
+    background-color: $color1;
     margin: 20px auto;
     &:hover{
-      background-color: lighten($bgc, 5%);
+      background-color: lighten($color1, 5%);
       color: #fff;
     }
   }

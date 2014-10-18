@@ -1,3 +1,36 @@
 .room_item{
+  color: #000;
+  padding: 7px 10px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  cursor: pointer;
+  &:hover{
+    background-color: lighten($color1, 5%);
+  }
+  &.active,
+  &.active:hover
+  {
+    background-color: #eee;
+  }
+  .sharp{
+    color: $color2;
+    display: inline-block;
+  }
+  .name{
+    display: inline-block;
+  }
+  .trash,
+  .edit{
+    display: none;
+  }
+  &:hover{
+    .trash,
+    .edit.visible{
+      color: $color2;
+      padding: 4px;
+      display: inline-block;
+      float: right;
+    }
+  }
 
 }

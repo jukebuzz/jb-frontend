@@ -26,6 +26,7 @@ define [
     routes:
       "":"index"
       "!/rooms": "rooms"
+      "!/rooms/:id": "rooms"
       "!/404": "error404"
       "*default":"default_router"
 

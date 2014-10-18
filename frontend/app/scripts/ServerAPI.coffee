@@ -41,5 +41,20 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
     get_rooms: ->
       @get {
         url:"/api/rooms"
-        stub:(async)-> async.resolve []
+        stub:(async)-> async.resolve [
+          id: 2
+          name: 'Dong Bobka'
+          owner_id: '1'
+          join_token: 'sasaSAsaSAsaDDDSDASDASDASDASD'
+        ,
+          id: 5
+          name: 'Dong Bobka 1'
+          owner_id: '31'
+          join_token: 'sasaSAsaSAsaDDDSDASDASDASDASD'
+        ,
+          id: 7
+          name: 'Bobka Dong'
+          owner_id: '34'
+          join_token: 'sasaSAsaSAsaDDDSDASDASDASDASD'
+        ]
       }
