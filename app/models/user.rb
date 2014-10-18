@@ -14,4 +14,13 @@
 
 class User < ActiveRecord::Base
   validates :nickname, :email, :uid, presence: true
+
+  def self.find_or_create_with_omniauth(auth)
+    find_or_create_by uid: auth['uid'] do |user|
+      user.name = auth[:info][:name]
+      user.nickname = auth[:info][:nickname]
+      user.email = auth[:info][:email]
+      user.avatar_url = auth[:info][:image]
+    end
+  end
 end
