@@ -8,11 +8,16 @@ module ErrorHandler
     rescue_from BadRequest, with: :bad_request
   end
 
-  class BadRequest < StandardError
+  class ApiError < StandardError
+    attr_reader :message
+
+    def initialize(message)
+      @message = message
+    end
   end
 
-  class AuthorizationError < StandardError
-  end
+  class BadRequest < ApiError; end
+  class AuthorizationError < ApiError; end
 
   def unsigned
     render json: construct_error_message('AuthorizationError', 'Signed request provided is not valid'),
@@ -24,8 +29,8 @@ module ErrorHandler
            status: :unauthorized
   end
 
-  def bad_request
-    render json: construct_error_message('RequestError', 'Something wrong with your request'),
+  def bad_request(exception)
+    render json: construct_error_message('RequestError', exception.message),
            status: :bad_request
   end
 
