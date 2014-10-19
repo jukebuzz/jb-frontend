@@ -10,7 +10,7 @@ define (require, exports, module)->
       name: ""
       email: ""
       avatar_url: ""
-      coins: 0
+      active_balance: 0
       active_room_id: 0
 
     computeds:

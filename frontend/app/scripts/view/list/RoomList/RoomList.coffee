@@ -36,6 +36,8 @@ define (require, exports, module)->
       return unless value
       id = model.get 'id'
       common.api.post_rooms_id_switch id
+      common.user.set 'active_room_id', id
+      common.user.refresh()
       common.router.navigate "!/rooms/#{id}", {trigger: true}
 
     onRoute: (id)->

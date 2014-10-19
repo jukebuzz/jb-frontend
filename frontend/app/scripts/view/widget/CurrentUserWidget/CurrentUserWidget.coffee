@@ -13,7 +13,7 @@ define (require, exports, module)->
 
     bindings:
       "@ui.name": "text:name"
-      "@ui.coins": "text:coins"
+      "@ui.coins": "text:active_balance"
       "@ui.avatar": "attr:{src:avatar_url_mini}"
 
     events:

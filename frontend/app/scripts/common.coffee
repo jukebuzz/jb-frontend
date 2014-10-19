@@ -18,6 +18,7 @@ define [
     images: null #ImagePreloader
     async:-> $.Deferred()
     api:null #ServerApi
+    audio:null #ServerApi
     sapi:null #SocialApi
     user:null #UserModel
     ga:null #Google Analitics

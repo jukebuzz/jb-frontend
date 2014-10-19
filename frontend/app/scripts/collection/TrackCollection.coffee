@@ -7,10 +7,12 @@ define (require, exports, module)->
     model: TrackModel
 
 
-    initialize: ({@autoRefresh})->
+    initialize: ->
       @listenTo this, "change:active", @onChangeActive
-      if @autoRefresh
-        @interval = setInterval (_.bind @refresh, this), 10000
+
+    makeRefresh: ->
+      @interval = setInterval (_.bind @refresh, this), 10000
+
 
     setSC: (data)-> @setData data
 

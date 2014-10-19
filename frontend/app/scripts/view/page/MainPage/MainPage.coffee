@@ -3,6 +3,8 @@ define (require, exports, module)->
   TrackList = require "view/list/TrackList/TrackList"
   NavigationWidget = require "view/widget/NavigationWidget/NavigationWidget"
   TrackSearchList = require "view/list/TrackSearchList/TrackSearchList"
+  VisualisationWidget = require "view/widget/VisualisationWidget/VisualisationWidget"
+  require 'utils/analyser'
 
 
   MainPage = _Page.extend
@@ -23,12 +25,31 @@ define (require, exports, module)->
       search:
         el: '[data-view-search]'
         view: TrackSearchList
+      vis: '[data-view-vis]'
 
     showSearch: false
 
     initialize: ->
       @listenTo @r.tracks, "focus", @onTracksFocus
       @listenTo @r.search, "focus", @onSearchFocus
+      @listenTo Backbone, "vis:toggle", @onToggleVis
+
+    onToggleVis: (value=true)->
+      if value
+        @showVis()
+      else
+        @closeVis()
+
+    showVis: ->
+      return unless @room_id
+      @vis = new VisualisationWidget
+      @vis?.setRoom @room_id
+      @r.vis.show @vis
+
+    closeVis: ->
+      return unless @vis
+      @r.vis.close @vis
+      delete @vis
 
     onTracksFocus: ->
       @showSearch = false
@@ -73,5 +94,6 @@ define (require, exports, module)->
 
     getWindow: _.memoize -> $ window
 
-    setRoom: (id)->
-      @r.tracks.setRoom id
+    setRoom: (@room_id)->
+      @r.tracks.setRoom @room_id
+      @vis?.setRoom @room_id

@@ -9,7 +9,7 @@ define (require, exports, module)->
 
   ViewModel = Backbone.Epoxy.Model.extend
     defaults:
-      search: "funk"
+      search: ""
 
   TrackSearchList = _List.extend
     template: "#TrackSearchList"
@@ -29,8 +29,9 @@ define (require, exports, module)->
     itemView: TrackSearchItem
     initialize: ->
       @viewModel = new ViewModel
-      @collection = new TrackCollection {autoRefresh: false}
+      @collection = new TrackCollection
       @collection.view = @itemView #if use backbone.epoxy < 1.2
+      window.collection = @collection
       @listenTo @viewModel, "change:search", @onChangeSearch
       @listenTo @collection, "change:active", @onCollectionChangeActive
       @onChangeSearch(@viewModel, @viewModel.get 'search')
@@ -38,8 +39,10 @@ define (require, exports, module)->
     onChangeSearch: _.throttle (model, value)->
       return unless value.length >= 3
       SC.get '/tracks.json',{
-        filter: 'streamable',
-        order: 'hotness',
+        streamable: true
+        filter: 'streamable'
+        order: 'hotness'
+        license: 'to_share'
         q: value
         'duration[to]': 500000
         limit: 20

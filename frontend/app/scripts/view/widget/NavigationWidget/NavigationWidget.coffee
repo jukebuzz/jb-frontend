@@ -15,4 +15,12 @@ define (require, exports, module)->
         el: '[data-view-rooms]'
         view: RoomList
 
+    ui:
+      showVis: "[data-js-show-vis]"
+
+    events:
+      "click @ui.showVis": "onClickShowVis"
+
+    onClickShowVis: -> Backbone.trigger "vis:toggle", true
+
 

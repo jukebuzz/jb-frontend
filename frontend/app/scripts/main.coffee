@@ -31,6 +31,7 @@ require.config
     'bootstrap/transition':"#{VENDOR_PATH}/bootstrap-sass-official/assets/javascripts/bootstrap/transition"
     'cookies': "#{VENDOR_PATH}/cookies-js/dist/cookies.min"
     'audio5js': "#{VENDOR_PATH}/audio5js/audio5"
+    'sketch': "#{VENDOR_PATH}/sketch.js/js/sketch"
   packages:[
     "view/layout"
     "view/widget"

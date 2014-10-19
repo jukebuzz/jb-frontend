@@ -1,0 +1,29 @@
+.visualisation_widget{
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background-color: #000;
+  z-index: 5;
+
+  &__track{
+    position: absolute;
+    color: white;
+    top: 50%;
+    margin-top: -36px;
+    font-size: 72px;
+    width: 100%;
+    text-align: center;
+  }
+  &__close{
+    cursor: pointer;
+    position: absolute;
+    color: white;
+    right: 50px;
+    top: 50px;
+    translate: 3s;
+    font-size: 25px;
+    &.visible{
+      opacity: 1;
+    }
+  }
+}

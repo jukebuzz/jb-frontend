@@ -86,4 +86,9 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
         data
       }
 
+    post_playlist_id_next: (id)->
+      @post {
+        url: "/api/playlists/#{id}/next"
+      }
+
 
