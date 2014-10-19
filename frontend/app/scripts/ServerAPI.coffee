@@ -35,7 +35,7 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
     delete_auth: ->
       @ajax {
         type: "DELETE"
-        url: "/api/auth"
+        url: "/auth"
       }
 
     get_rooms: ->
