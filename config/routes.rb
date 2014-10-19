@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :rooms, only: [:index, :create, :destroy] do
       collection do
         post :join
+        post 'github/:token', to: :github
       end
       member do
         post :switch

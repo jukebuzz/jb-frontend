@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, except: [:github]
 
   def index
     @rooms = current_user.rooms
@@ -37,6 +37,12 @@ class RoomsController < ApplicationController
 
   def destroy
     Rooms::Destroyer.new(owner: current_user, room: room).call
+    head :no_content
+  end
+
+  def github
+    Rooms::GithubIntegrator.new(room: Room.find_by!(github_token: params[:token]),
+                                params: params).call
     head :no_content
   end
 

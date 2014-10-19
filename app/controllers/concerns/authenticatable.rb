@@ -1,6 +1,10 @@
 module Authenticatable
   extend ActiveSupport::Concern
 
+  included do
+    helper_method :current_user
+  end
+
   protected
 
   def current_user
