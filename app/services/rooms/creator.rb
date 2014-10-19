@@ -4,9 +4,18 @@ module Rooms
 
     def call
       @room = Room.new name: name, owner: owner
-      room.save && Joiner.new(user: owner, room: room).call
+      if room.save
+        Joiner.new(user: owner, room: room).call
+        reward
+      end
 
       room
+    end
+
+    private
+
+    def reward
+      Coins::Earner.new(user: owner, room: room).call(Settings.coins.rewards.create)
     end
   end
 end

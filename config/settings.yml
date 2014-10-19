@@ -1,6 +1,9 @@
 defaults: &defaults
   coins:
     hourly_spreaded: 6
+    rewards:
+      create: 20
+      join: 5
     balance:
       max_given: 50
     pricing_plan:

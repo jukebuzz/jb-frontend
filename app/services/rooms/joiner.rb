@@ -4,9 +4,18 @@ module Rooms
 
     def call
       membership = Membership.new(user: user, room: room)
-      membership.save && Switcher.new(user: user, room: room).call
+      if membership.save
+        Switcher.new(user: user, room: room).call
+        reward
+      end
 
       membership
+    end
+
+    private
+
+    def reward
+      Coins::Earner.new(user: user, room: room).call(Settings.coins.rewards.join)
     end
   end
 end
