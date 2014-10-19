@@ -65,7 +65,7 @@ define (require, exports, module)->
       transform = if @showSearch
           "translate(0, 0)"
       else
-        height = @windowHeight - (46 + 100)
+        height = @windowHeight - (46 + 100 + 38)
         "translate(0, #{height}px)"
       _.delay =>
         @ui.search.css {transform}
