@@ -42,9 +42,11 @@ define [
       view.setRoom id if id?
 
     roomAdd: middleware.wrap (token)->
-      common.api.post_rooms_join(token).done (data)->
-        Backbone.trigger "rooms:needUpdate"
-        common.router "!/rooms/#{data.id}", {trigger:true}
+      common.api.post_rooms_join(token)
+        .done (data)->
+          Backbone.trigger "rooms:needUpdate"
+          common.router.navigate "!/rooms/#{data.id}", {trigger:true}
+        .fail -> common.router.navigate "#", {trigger: true}
 
     error404: middleware.wrap ->
       showPage Page.Error404Page
