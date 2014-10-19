@@ -13,12 +13,12 @@ define (require, exports, module)->
       stream_url: ""
       number: 0
       active: false
+      added: false
 
     computeds:
       durationString:
         deps: ['duration']
         get: (duration)->
-          console.log duration
           duration /= 1000
           mm = Math.floor duration / 60
           ss = Math.floor duration % 60

@@ -17,7 +17,7 @@
     height: 49px;
     line-height: 49px;
     white-space: nowrap;
-    max-width: 70%;
+    max-width: 400px;
     margin-left: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -38,7 +38,13 @@
       display: block;
     }
   }
+  &.added{
+    .buzz{
+      transform: translate(150px, 0);
+    }
+  }
   .buzz{
+    transition: 0.4s 0.4s;
     display: none;
     float: right;
     font-variant: small-caps;
@@ -62,15 +68,24 @@
     display: none;
   }
   &.active .icon-play{
+    @extend .img_index_playing;
     display: block;
     float: left;
-    color: white;
-    margin-left: -38px;
-    margin-top: 13px;
-    font-size: 15px;
-    background-color: $color2;
-    padding: 4px 5px 4px 9px;
-    border-radius: 999px;
+    margin-left: -49px;
+    width: 49px;
+    height: 49px;
+    background-position: 50% 100%;
+    opacity: 0.7;
+  }
+
+  &.added .before-add{
+    display: none;
+  }
+  span.after-add{
+    display: none;
+  }
+  &.added .after-add{
+    display: inline;
   }
 
 

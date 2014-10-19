@@ -28,15 +28,18 @@
     overflow: hidden;
   }
 
-  &__playlist,
+  &__playlist{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 46px;
+  }
   &__search{
     position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
-  }
-  &__playlist{
-
   }
   &__search{
     top: 100px;

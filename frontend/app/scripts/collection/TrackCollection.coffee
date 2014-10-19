@@ -12,9 +12,7 @@ define (require, exports, module)->
       if @autoRefresh
         @interval = setInterval (_.bind @refresh, this), 10000
 
-    setSC: (data)->
-      @remove @models
-      @add data, {parse: true}
+    setSC: (data)-> @setData data
 
     onChangeActive: (model, value)->
       return unless value
@@ -25,8 +23,12 @@ define (require, exports, module)->
       return unless id?
       common.api.get_playlist_id_items(id).done (data)=>
         @room_id = id
-        @remove @models
-        @add data, {parse: true}
+        @setData data
+
+    setData: (data)->
+      @remove @models
+      @add data, {parse: true}
+
 
     parse: (r)->
       i = 1

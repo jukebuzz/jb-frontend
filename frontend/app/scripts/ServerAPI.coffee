@@ -78,3 +78,12 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
       @get {
         url: "/api/playlists/#{id}/items"
       }
+
+    post_playlist_id_items: (id, soundcloud_id)->
+      data = track: {soundcloud_id}
+      @post {
+        url: "/api/playlists/#{id}/items"
+        data
+      }
+
+
