@@ -20,7 +20,8 @@ html.no-js
     // build:js(app) scripts/vendor/modernizr.js
     script(src="bower_components/modernizr/modernizr.js")
     // endbuild
-    block head
+
+
 
   body
     | <!--[if lt IE 10]>
@@ -36,5 +37,12 @@ html.no-js
     //- script(src="bower_components/jquery/jquery.js")
     // endbower
     // endbuild
-
     script(data-main="scripts/main", src="bower_components/requirejs/require.js")
+    script(type='text/javascript').
+      var rumbleBannerBackgroundColor, rumbleBannerTextColor, rumbleBannerLinkColor, rumbleBannerPlacement;
+      rumbleBannerBackgroundColor = "#161616";
+      rumbleBannerTextColor = "#b0b0b0";
+      rumbleBannerLinkColor = "#ffffff";
+      rumbleBannerPlacement = "top"; // Optionally replace with "bottom".
+    script(src='https://d4nnn7wspfa3h.cloudfront.net/banner-2014.js', type='text/javascript')
+
