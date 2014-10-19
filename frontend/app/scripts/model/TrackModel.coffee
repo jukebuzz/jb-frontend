@@ -12,6 +12,7 @@ define (require, exports, module)->
       soundcloud_id: ""
       stream_url: ""
       number: 0
+      active: false
 
     computeds:
       durationString:
@@ -24,5 +25,7 @@ define (require, exports, module)->
           ss = "0" + ss if (""+ss).length is 1
           "#{mm}:#{ss}"
 
-    # parse:(r)->
-    #   r
+    parse:(r)->
+      if r.user?
+        r.artist = r.user.username
+      r

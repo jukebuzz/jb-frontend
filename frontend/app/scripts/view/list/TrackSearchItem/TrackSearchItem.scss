@@ -1,3 +1,77 @@
 .tracksearch_item{
+  font-size: 14px;
+  font-family: sans-serif;
+  @extend .clearfix;
+  padding: 2px 18px;
+  border-bottom: 1px solid #eee;
+  &__info{
+  }
+  &__albumart{
+    background-color: $color-white;
+    width: 49px;
+    height: 49px;
+    float:left;
+  }
+  .track_item__title{
+    float: left;
+    height: 49px;
+    line-height: 49px;
+    white-space: nowrap;
+    max-width: 70%;
+    margin-left: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .track_item__duration{
+    height: 49px;
+    line-height: 49px;
+    float: right;
+    margin-right: 10px;
+    color: #aaa;
+  }
+  &:hover{
+    background-color: #f4dcb0;
+    .track_item__duration{
+      display: none;
+    }
+    .buzz{
+      display: block;
+    }
+  }
+  .buzz{
+    display: none;
+    float: right;
+    font-variant: small-caps;
+    border: 1px solid;
+    padding: 3px 5px;
+    margin-right: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+    &:hover{
+      background-color: $color-white;
+    }
+  }
+  .artist{
+    font-weight: bold;
+    padding-right: 10px
+  }
+  .track{
+    padding-left: 10px;
+  }
+  .icon-play{
+    display: none;
+  }
+  &.active .icon-play{
+    display: block;
+    float: left;
+    color: white;
+    margin-left: -38px;
+    margin-top: 13px;
+    font-size: 15px;
+    background-color: $color2;
+    padding: 4px 5px 4px 9px;
+    border-radius: 999px;
+  }
+
 
 }

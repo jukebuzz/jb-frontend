@@ -24,7 +24,7 @@ define (require, exports, module)->
         el: '[data-view-search]'
         view: TrackSearchList
 
-    showSearch: false
+    showSearch: true
 
     initialize: ->
       @listenTo @r.tracks, "focus", @onTracksFocus
@@ -44,7 +44,7 @@ define (require, exports, module)->
       transform = if @showSearch
           "translate(0, 0)"
       else
-        height = @windowHeight - ( 50+ 100)
+        height = @windowHeight - (46 + 100)
         "translate(0, #{height}px)"
       _.delay =>
         @ui.search.css {transform}
