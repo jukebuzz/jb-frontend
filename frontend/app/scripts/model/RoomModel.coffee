@@ -9,6 +9,7 @@ define (require, exports, module)->
       name: ''
       owner_id: ''
       join_token: ''
+      github_token: ''
       active: false
 
     computeds:
@@ -20,6 +21,10 @@ define (require, exports, module)->
         get: (join_token)->
           url = location.protocol + '//' + location.hostname + location.pathname
           url += '#!/roomadd/' + join_token
+      github_link:
+        deps: ['github_token']
+        get: (github_token)->
+          url = location.protocol + '//' + location.hostname + "/rooms/github/#{github_token}"
 
 
     parse:(r)->

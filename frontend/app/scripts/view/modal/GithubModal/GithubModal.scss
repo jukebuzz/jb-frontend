@@ -1,0 +1,30 @@
+.github_modal{
+  text-align: center;
+  .modal-header,
+  .modal-footer{
+    border: none;
+    text-align: center;
+  }
+  .modal-footer{
+    margin-bottom: 10px;
+  }
+  .modal{}
+  .modal-dialog{
+    margin-top: 200px;
+    width: 400px;
+  }
+  .modal-content{
+    border-radius: 0;
+  }
+  .modal-body{
+    margin: 0;
+  }
+  .close{
+    float: right;
+  }
+  .input{
+    border: 1px solid $color1;
+    width: 200px;
+    text-align: center;
+  }
+}

@@ -19,12 +19,14 @@
     display: inline-block;
   }
   .trash,
+  .github,
   .edit,
   .share{
     display: none;
   }
   &:hover{
     .trash,
+    .github.visible,
     .edit.visible,
     .share.visible{
       color: $color2;

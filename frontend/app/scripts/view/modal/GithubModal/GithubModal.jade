@@ -1,0 +1,11 @@
+//- .github_modal
+extends ../Modal/_Modal
+//-block content
+//-block header
+block body
+  h3
+    |Room #
+    span(data-js-name)
+  p.message Add this URL to your Github repository push webhooks
+  input.input(data-js-link readonly)
+//-block footer

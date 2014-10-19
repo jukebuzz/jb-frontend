@@ -2,6 +2,7 @@ define (require, exports, module)->
   _List = require "../_List"
   ConfirmModal = require "view/modal/ConfirmModal/ConfirmModal"
   RoomShareModal = require "view/modal/RoomShareModal/RoomShareModal"
+  GithubModal = require "view/modal/GithubModal/GithubModal"
   common = require 'common'
 
   RoomItem = _List.extend
@@ -14,17 +15,20 @@ define (require, exports, module)->
       edit: '[data-js-edit]'
       trash: '[data-js-trash]'
       share: '[data-js-share]'
+      github: '[data-js-github]'
 
     bindings:
       ':el': 'classes: {active: active}'
       '@ui.name': 'text: name'
       '@ui.before': 'text: before'
       '@ui.share': 'classes: {visible:is_mine}'
+      '@ui.github': 'classes: {visible:is_mine}'
 
     events:
       'click': 'onClick'
       'click @ui.trash': 'onClickTrash'
       'click @ui.share': 'onClickShare'
+      'click @ui.github': 'onClickGithub'
 
     computeds:
       before:
@@ -37,6 +41,10 @@ define (require, exports, module)->
 
     onClickShare: ->
       modal = new RoomShareModal {@model}
+      modal.showModal()
+
+    onClickGithub: ->
+      modal = new GithubModal {@model}
       modal.showModal()
 
     onClickTrash: (e)->
