@@ -4,6 +4,7 @@ defaults: &defaults
     rewards:
       create: 20
       join: 5
+      commit: 1
     balance:
       max_given: 50
     pricing_plan:
