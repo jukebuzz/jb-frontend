@@ -46,7 +46,8 @@ define (require, exports, module)->
         q: value
         'duration[to]': 500000
         limit: 20
-        }, (result)=>
+        }, (result, error)=>
+          return if result is null or error
           @collection.setSC result
     , 700
 
