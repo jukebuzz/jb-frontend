@@ -6,6 +6,7 @@ module ErrorHandler
     rescue_from ActionController::ParameterMissing, with: :bad_request
     rescue_from ActiveRecord::RecordInvalid, with: :bad_request
     rescue_from BadRequest, with: :bad_request
+    rescue_from RoomOwnerAccessRequired, with: :room_owner_access_required
   end
 
   class ApiError < StandardError
@@ -16,8 +17,14 @@ module ErrorHandler
     end
   end
 
+  class RoomOwnerAccessRequired < ApiError; end
   class BadRequest < ApiError; end
   class AuthorizationError < ApiError; end
+
+  def room_owner_access_required
+    render json: construct_error_message('RoomOwnerAccessRequired', 'Room owner access required'),
+           status: :unauthorized
+  end
 
   def unsigned
     render json: construct_error_message('AuthorizationError', 'Signed request provided is not valid'),

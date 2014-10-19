@@ -7,6 +7,7 @@
 #  owner_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  played_at  :datetime
 #
 
 class PlaylistItem < ActiveRecord::Base
@@ -14,4 +15,8 @@ class PlaylistItem < ActiveRecord::Base
   belongs_to :owner, class_name: User
 
   delegate :soundcloud_id, :artwork_url, :stream_url, :duration, :title, :artist, to: :track
+
+  def played!
+    touch(:played_at)
+  end
 end

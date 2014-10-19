@@ -20,7 +20,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :playlists, only: :none do
+    resources :playlists, controller: 'playlists', only: :none do
+      member do
+        post :next
+      end
       resources :items, controller: 'playlist_items', only: [:index, :create, :destroy] do
         member do
           post :move_up
