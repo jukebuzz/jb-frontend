@@ -190,6 +190,7 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    settingslogic (2.0.9)
     slop (3.6.0)
     soundcloud (0.3.1)
       hashie
@@ -245,6 +246,7 @@ DEPENDENCIES
   rails_12factor
   rubocop
   sass-rails (~> 4.0.3)
+  settingslogic
   soundcloud
   uglifier (>= 1.3.0)
   unicorn
