@@ -1,5 +1,6 @@
 defaults: &defaults
   coins:
+    hourly_spreaded: 6
     balance:
       max_given: 50
 
