@@ -7,6 +7,7 @@ module ErrorHandler
     rescue_from ActiveRecord::RecordInvalid, with: :bad_request
     rescue_from BadRequest, with: :bad_request
     rescue_from RoomOwnerAccessRequired, with: :room_owner_access_required
+    rescue_from NotEnoughCoins, with: :not_enough_coins
   end
 
   class ApiError < StandardError
@@ -17,9 +18,15 @@ module ErrorHandler
     end
   end
 
+  class NotEnoughCoins < ApiError; end
   class RoomOwnerAccessRequired < ApiError; end
   class BadRequest < ApiError; end
   class AuthorizationError < ApiError; end
+
+  def not_enough_coins
+    render json: construct_error_message('NotEnoughCoins', 'Not enough coins'),
+           status: :bad_request
+  end
 
   def room_owner_access_required
     render json: construct_error_message('RoomOwnerAccessRequired', 'Room owner access required'),
