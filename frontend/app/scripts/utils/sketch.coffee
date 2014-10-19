@@ -49,12 +49,13 @@ define (require)->
             try
 
               # setup the audio analyser
-              analyser = new AudioAnalyser MP3_PATH, NUM_BANDS, SMOOTHING
+              @analyser = analyser = new AudioAnalyser MP3_PATH, NUM_BANDS, SMOOTHING
 
               # update particles based on fft transformed audio frequencies
               analyser.onUpdate = ( bands ) => particle.energy = bands[ particle.band ] / 256 for particle in @particles
 
               # start as soon as the audio is buffered
+              analyser.start()
 
               # show audio controls
               document.body.appendChild analyser.audio
@@ -93,4 +94,6 @@ define (require)->
             particle.move()
             particle.draw @
 
-    kill: -> @ctx.destroy()
+    destructor: ->
+      @ctx.analyser?.stop?()
+      @ctx.destroy()

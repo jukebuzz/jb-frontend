@@ -23,10 +23,7 @@ define (require, exports, module)->
       '@ui.artist': 'text: artist'
 
     events:
-      "keypress": "onKeyup"
       "click @ui.close": "onClickClose"
-
-
 
     initialize: ->
       @collection = common.trackCollection
@@ -39,21 +36,27 @@ define (require, exports, module)->
       audio.done (player)=>
         @player = player
         @startPlay()
-        @screen = new ScreenSketch @$el[0], player.audio.audio
         @player.on 'ended', =>
           common.api.post_playlist_id_next(@room_id).done (data)=>
             @collection.setData data
           @startPlay()
-
-
 
     startPlay: ->
       return if @collection.length is 0
       model = @collection.at(0)
       @model.set model.toJSON()
       url = (model.get 'stream_url') + '?client_id=e90b73852966e0f8a83b4c4e39d90ab5'
-      @player.load url
-      @player.play()
+      if @screen?
+        delete @screen
+        @screen = null
+      # @player.pause()
+      _.delay =>
+        @player.load url
+        @screen = new ScreenSketch @$el[0], @player.audio.audio
+      , 50
+      # _.delay =>
+        # @player.play()
+      # , 100
 
 
     onClickClose: ->
@@ -62,12 +65,13 @@ define (require, exports, module)->
     onClose: ->
       $(document).off "keydown", @onKeyPress
       audio.done (@player)=>
-        # player.off 'ended'
-        if player.playing
-          player.pause()
-          player.pause()
-      # @screen.kill()
+        player.off 'ended'
+        # if player.playing
+        #   player.pause()
+        if @screen?
+          delete @screen
+          @screen = null
 
-    onKeypress: (e)->
+    onKeyPress: (e)->
       Backbone.trigger "vis:toggle", false if e.keyCode is 27
 
