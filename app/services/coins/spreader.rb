@@ -9,6 +9,8 @@ module Coins
       end
     end
 
+    private
+
     def lucky_members
       members.sample(spreaded_coins_count)
     end
