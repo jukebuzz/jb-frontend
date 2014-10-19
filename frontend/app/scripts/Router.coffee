@@ -34,8 +34,10 @@ define [
       view = showPage Page.IndexPage
 
     rooms: middleware.wrap (id)->
-      id = common.user.get 'active_room_id' unless id?
-      @navigate "!/rooms/#{id}"
+      auto_id = common.user.get 'active_room_id' unless id?
+      if auto_id?
+        @navigate "!/rooms/#{auto_id}", {trigger: true}
+        return
       view = showPage Page.MainPage
       view.setRoom id if id?
 
