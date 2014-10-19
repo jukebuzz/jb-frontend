@@ -26,7 +26,7 @@ window.PREPROCESS = {
 ###
 window.PREPROCESS = {
   mode: "testing"
-  GA: "UA-XXXXX-X"
+  GA: "UA-55892788-1"
   SC: "e90b73852966e0f8a83b4c4e39d90ab5"
   social:
     fb: appID: 0
@@ -46,7 +46,7 @@ window.PREPROCESS = {
 ###
 window.PREPROCESS = {
   mode: "production"
-  GA: "UA-XXXXX-X"
+  GA: "UA-55892788-1"
   SC: "e90b73852966e0f8a83b4c4e39d90ab5"
   social:
     fb: appID: 0

@@ -10,7 +10,7 @@ define (require, exports, module)->
   audio = require "utils/audio"
   TrackCollection = require "collection/TrackCollection"
 
-  #GAConstructor = require "sp-utils-gaconstructor"
+  GAConstructor = require "sp-utils-gaconstructor"
   UserModel = require "model/UserModel"
   #social = require "packages/social"
 
@@ -31,7 +31,7 @@ define (require, exports, module)->
         # player.play()
 
       # Init google analitics
-      #common.ga = new GAConstructor preprocess.GA, Backbone
+      common.ga = new GAConstructor preprocess.GA, Backbone
 
 
       #common.sapi = new social.SocialApi
