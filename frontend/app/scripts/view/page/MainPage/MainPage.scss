@@ -1,6 +1,7 @@
 .main_page{
-  background-image: url(../images/index/bg.jpg);
+  background-image: url(../images/main/bg-cross.jpg);
   background-size: cover;
+  background-position: 50%;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -13,13 +14,12 @@
 
   &__navigation{
     float: left;
-    width: 300px;
-    background-color: $color-white;
-    background-color: rgba(255, 255, 255, 0.90);
+    width: 240px;
+    background-color: rgba(200, 200, 200, 0.90);
     height: 100%;
   }
   &__musicarea{
-    width: 940px - 300px;
+    width: 940px - 240px;
     float: right;
     height: 100%;
     background-color: $color-white;

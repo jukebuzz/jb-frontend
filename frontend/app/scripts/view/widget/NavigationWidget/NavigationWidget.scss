@@ -8,14 +8,27 @@
   position: absolute;
   transition: transform 0.4s;
   a.logo{
+    .img{
+      @extend .img_main_logo-small;
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: -2px;
+    }
     display: block;
-    margin: 20px 20px 10px 20px;
+    margin: 10px 20px 10px 34px;
     padding: 20px 20px 10px 0px;
     font-size: 40px;
     color: #ff8c00;
+    color: #000;
     text-decoration: none;
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 40px;
+    // font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
+    span{
+      position: relative;
+      // top: -20px;
+
+    }
   }
   hr.separator{
     border-style: none;
