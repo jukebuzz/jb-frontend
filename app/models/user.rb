@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   validates :uid, presence: true, uniqueness: true
 
   def active_balance
-    memberships.find_by(room: active_room).try(:coins)
+    memberships.find_by(room: active_room).try(:coins).to_i
   end
 
   def self.find_or_create_with_omniauth(auth)
