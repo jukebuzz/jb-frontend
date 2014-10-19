@@ -5,7 +5,7 @@ define (require, exports, module)->
 
   IndexPage = _Page.extend
     template:"#IndexPage"
-    className:"index_page"
+    el: ".index_page"
 
     ui:
       signInLink: '[data-js-sign-in]'
@@ -20,6 +20,8 @@ define (require, exports, module)->
 
     initialize: ->
       @model = common.user
+
+
 
     onClickSignIn:(e)->
       e.preventDefault()
