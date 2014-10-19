@@ -47,7 +47,7 @@ define (require, exports, module)->
       @model.set model.toJSON()
       url = (model.get 'stream_url') + '?client_id=e90b73852966e0f8a83b4c4e39d90ab5'
       if @screen?
-        delete @screen
+        @screen.kill()
         @screen = null
       # @player.pause()
       _.delay =>
@@ -69,7 +69,7 @@ define (require, exports, module)->
         # if player.playing
         #   player.pause()
         if @screen?
-          delete @screen
+          @screen.kill()
           @screen = null
 
     onKeyPress: (e)->

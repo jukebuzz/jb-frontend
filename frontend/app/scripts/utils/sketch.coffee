@@ -94,6 +94,6 @@ define (require)->
             particle.move()
             particle.draw @
 
-    destructor: ->
+    kill: ->
       @ctx.analyser?.stop?()
       @ctx.destroy()
