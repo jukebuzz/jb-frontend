@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate, except: [:github]
 
   def index
-    @rooms = current_user.rooms
+    @rooms = current_user.rooms.order :id
   end
 
   def create
