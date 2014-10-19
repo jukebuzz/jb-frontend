@@ -44,8 +44,6 @@ class PlaylistItemsController < ApplicationController
     @playlist ||= Playlist.new(room)
   end
 
-  private
-
   def track_params
     params.require(:track).permit(:soundcloud_id)
   end
