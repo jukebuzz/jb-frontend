@@ -4,8 +4,8 @@ module Coins
 
     def call(amount)
       if balance >= amount
-          spend amount
-          block_given? ? yield : true
+        spend amount
+        block_given? ? yield : true
       else
         false
       end
