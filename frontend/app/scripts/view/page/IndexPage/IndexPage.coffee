@@ -9,9 +9,17 @@ define (require, exports, module)->
 
     ui:
       signInLink: '[data-js-sign-in]'
+      enterLink: '[data-js-enter]'
+
+    bindings:
+      '@ui.signInLink': 'classes: {hide: (uid)}'
+      '@ui.enterLink': 'classes: {hide: not(uid)}'
 
     events:
       'click @ui.signInLink': 'onClickSignIn'
+
+    initialize: ->
+      @model = common.user
 
     onClickSignIn:(e)->
       e.preventDefault()

@@ -24,7 +24,7 @@ define (require, exports, module)->
         el: '[data-view-search]'
         view: TrackSearchList
 
-    showSearch: true
+    showSearch: false
 
     initialize: ->
       @listenTo @r.tracks, "focus", @onTracksFocus
