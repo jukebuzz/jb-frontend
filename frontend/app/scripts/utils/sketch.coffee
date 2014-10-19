@@ -58,7 +58,7 @@ define (require)->
               analyser.start()
 
               # show audio controls
-              document.body.appendChild analyser.audio
+              #document.body.appendChild analyser.audio
 
               intro = document.getElementById 'intro'
               intro.style.display = 'none'

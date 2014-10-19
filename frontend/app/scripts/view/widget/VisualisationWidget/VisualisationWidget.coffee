@@ -49,7 +49,7 @@ define (require, exports, module)->
       if @screen?
         @screen.kill()
         @screen = null
-      # @player.pause()
+      @player.pause()
       _.delay =>
         @player.load url
         @screen = new ScreenSketch @$el[0], @player.audio.audio
@@ -67,7 +67,7 @@ define (require, exports, module)->
       audio.done (@player)=>
         player.off 'ended'
         # if player.playing
-        #   player.pause()
+        # player.pause()
         if @screen?
           @screen.kill()
           @screen = null
