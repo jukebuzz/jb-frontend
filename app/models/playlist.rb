@@ -46,8 +46,9 @@ class Playlist
   end
 
   def items
-    # TODO: optimize
-    playlist_items.map { |id| PlaylistItem.find(id) }
+    PlaylistItem.where(id: playlist_items)
+                .order(playlist_items.map { |i| "id = #{i}" }.reverse!.join(','))
+                .includes(:track)
   end
 
   private
