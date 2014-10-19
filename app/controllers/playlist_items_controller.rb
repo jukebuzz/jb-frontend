@@ -33,7 +33,7 @@ class PlaylistItemsController < ApplicationController
   private
 
   def playlist_manager
-    PlaylistManager.new(playlist)
+    PlaylistManager.new(playlist: playlist, user: current_user)
   end
 
   def room

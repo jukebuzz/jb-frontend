@@ -11,6 +11,7 @@
 
 class PlaylistItem < ActiveRecord::Base
   belongs_to :track
+  belongs_to :owner, class_name: User
 
   delegate :soundcloud_id, :artwork_url, :stream_url, :duration, :title, :artist, to: :track
 end

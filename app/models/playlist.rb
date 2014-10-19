@@ -4,13 +4,13 @@ class Playlist
     @room = room
   end
 
-  def append_track(track)
-    @room.playlist_items.push(PlaylistItem.create(track: track).id)
+  def append_track(track, user)
+    @room.playlist_items.push(create_playlist_item(track, user).id)
     playlist_items_will_change_and_save
   end
 
-  def prepend_track(track)
-    @room.playlist_items.unshift(PlaylistItem.create(track: track).id)
+  def prepend_track(track, user)
+    @room.playlist_items.unshift(create_playlist_item(track, user).id)
     playlist_items_will_change_and_save
   end
 
@@ -41,6 +41,10 @@ class Playlist
   end
 
   private
+
+  def create_playlist_item(track, owner)
+    PlaylistItem.create(track: track, owner: owner)
+  end
 
   def playlist_items_will_change_and_save
     @room.playlist_items_will_change!
