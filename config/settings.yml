@@ -3,6 +3,12 @@ defaults: &defaults
     hourly_spreaded: 6
     balance:
       max_given: 50
+    pricing_plan:
+      append: 1
+      prepend: 100
+      move_up: 5
+      move_down: 25
+      delete: 50
 
 development:
   <<: *defaults
