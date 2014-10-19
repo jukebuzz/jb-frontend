@@ -34,6 +34,7 @@ define (require, exports, module)->
 
     onCollectionChangeActive: (model, value)->
       return unless value
+      @trigger "change:model", model
       id = model.get 'id'
       common.api.post_rooms_id_switch id
       common.user.set 'active_room_id', id

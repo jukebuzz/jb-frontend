@@ -48,7 +48,7 @@ define (require, exports, module)->
         limit: 20
         }, (result)=>
           @collection.setSC result
-    , 2000
+    , 700
 
     onCollectionChangeActive: (model, value)->
       return unless value
