@@ -55,7 +55,6 @@ define (require)->
               analyser.onUpdate = ( bands ) => particle.energy = bands[ particle.band ] / 256 for particle in @particles
 
               # start as soon as the audio is buffered
-              analyser.start()
 
               # show audio controls
               document.body.appendChild analyser.audio
