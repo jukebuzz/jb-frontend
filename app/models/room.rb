@@ -27,6 +27,12 @@ class Room < ActiveRecord::Base
 
   before_create :set_auth_token
 
+  alias_method :members, :users
+
+  def active_members
+    members.where active_room: self
+  end
+
   private
 
   def set_auth_token

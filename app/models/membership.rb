@@ -7,6 +7,7 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  coins      :integer          default(0)
 #
 # Indexes
 #
@@ -20,4 +21,5 @@ class Membership < ActiveRecord::Base
 
   validates :room, :user, presence: true
   validates :room, uniqueness: { scope: :user }
+  validates :coins, numericality: { greater_than_or_equal_to: 0 }
 end

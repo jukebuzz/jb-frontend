@@ -17,6 +17,9 @@ gem 'omniauth-github'
 # External APIs
 gem 'soundcloud'
 
+# Settings
+gem 'settingslogic'
+
 group :development do
   # Local configuration
   gem 'dotenv-rails'
