@@ -9,6 +9,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  playlist_items :integer          default([]), is an Array
+#  github_token   :string(255)
 #
 # Indexes
 #
@@ -33,14 +34,13 @@ class Room < ActiveRecord::Base
     members.where active_room: self
   end
 
-  private
-
   def set_auth_token
-    return if join_token.present?
+    generate_token(:join_token)
+    generate_token(:github_token)
+  end
 
-    loop do
-      self.join_token = SecureRandom.hex
-      break unless self.class.exists?(join_token: join_token)
-    end
+  def generate_token(field)
+    return if send(field).present?
+    loop { break unless self.class.exists?(field => send("#{field}=", SecureRandom.hex)) }
   end
 end
