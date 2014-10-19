@@ -24,20 +24,27 @@
     height: 100%;
     background-color: $color-white;
     background-color: rgba(255, 255, 255, 0.8);
-
+    position: relative;
+    overflow: hidden;
   }
 
   &__playlist,
   &__search{
-    // position: absolute;s
-    // width: 50%;
-    // height: 100%;
-  }
-  &__playlist{
-    right: 0;
-  }
-  &__search{
-    background-color: rgba(213,206,255, 0.85);
+    position: absolute;
+    width: 100%;
+    height: 100%;
     left: 0;
   }
+  &__playlist{
+
+  }
+  &__search{
+    top: 100px;
+    background-color: $color-white;
+  }
+
+  .animated{
+    transition: 0.6s;
+  }
+
 }

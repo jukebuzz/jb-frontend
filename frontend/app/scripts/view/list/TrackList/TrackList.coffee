@@ -9,10 +9,17 @@ define (require, exports, module)->
     bindings:
       ":el": "collection: $collection"
     itemView: TrackItem
+
+
+    events:
+      "click": "onClick"
+
     initialize: ->
       @collection = common.trackCollection
       @collection.view = @itemView #if use backbone.epoxy < 1.2
 
     setRoom: (id)->
       @collection.refresh(id)
+
+    onClick: -> @trigger "focus"
 

@@ -4,3 +4,5 @@ define (require, exports, module)->
   RoomList: require './RoomList/RoomList'
   TrackItem: require './TrackItem/TrackItem'
   TrackList: require './TrackList/TrackList'
+  TrackSearchItem: require './TrackSearchItem/TrackSearchItem'
+  TrackSearchList: require './TrackSearchList/TrackSearchList'

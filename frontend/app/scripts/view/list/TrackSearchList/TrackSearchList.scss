@@ -1,0 +1,20 @@
+.tracksearch_list{
+  font-size: 14px;
+  font-family: sans-serif;
+  .searchform{
+    @extend .clearfix;
+    height: 50px;
+    width: 100%;
+    // background-color: $color-white;
+    border-bottom: 1px solid #eee;
+
+  }
+  .searchform__input{
+    position: absolute;
+    height: 30px;
+    margin: 5px 0 0 5px;;
+    width: 97%;
+  }
+
+
+}
