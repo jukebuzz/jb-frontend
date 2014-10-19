@@ -42,7 +42,6 @@ define (require, exports, module)->
 
     start:->
       layout = {}
-      layout.navigation   = new Layout.NavigationLayout   el: "#navigation-layout"
       layout.content  = new Layout.ContentLayout  el: "#content-layout"
       layout.footer   = new Layout.FooterLayout   el: "#footer-layout"
       layout.modal    = new Layout.ModalLayout    el: "#modal-layout"
