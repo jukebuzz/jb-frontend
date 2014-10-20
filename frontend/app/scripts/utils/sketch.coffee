@@ -46,37 +46,23 @@ define (require)->
 
           if AudioAnalyser.enabled
 
-            try
 
-              # setup the audio analyser
-              @analyser = analyser = new AudioAnalyser MP3_PATH, NUM_BANDS, SMOOTHING
 
-              # update particles based on fft transformed audio frequencies
-              analyser.onUpdate = ( bands ) => particle.energy = bands[ particle.band ] / 256 for particle in @particles
+            @analyser = analyser = new AudioAnalyser MP3_PATH, NUM_BANDS, SMOOTHING
 
-              # start as soon as the audio is buffered
-              analyser.start()
+            # update particles based on fft transformed audio frequencies
+            analyser.onUpdate = ( bands ) => particle.energy = bands[ particle.band ] / 256 for particle in @particles
 
-              # show audio controls
-              #document.body.appendChild analyser.audio
+            # start as soon as the audio is buffered
+            analyser.start()
 
-              intro = document.getElementById 'intro'
-              intro.style.display = 'none'
+            # show audio controls
+            #document.body.appendChild analyser.audio
 
-              # bug in Safari 6 when using getByteFrequencyData with MediaElementAudioSource
-              # @see http://goo.gl/6WLx1
-              if /Safari/.test( navigator.userAgent ) and not /Chrome/.test( navigator.userAgent )
+            # bug in Safari 6 when using getByteFrequencyData with MediaElementAudioSource
+            # @see http://goo.gl/6WLx1
+            # catch error
 
-                warning = document.getElementById 'warning2'
-                warning.style.display = 'block'
-
-            catch error
-
-          else
-
-            # Web Audio API not detected
-            warning = document.getElementById 'warning1'
-            warning.style.display = 'block'
 
         draw: ->
 

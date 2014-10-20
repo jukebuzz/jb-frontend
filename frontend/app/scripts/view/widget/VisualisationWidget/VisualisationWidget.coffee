@@ -39,12 +39,17 @@ define (require, exports, module)->
         @player.on 'ended', =>
           common.api.post_playlist_id_next(@room_id).done (data)=>
             @collection.setData data
-          @startPlay()
+            @startPlay()
 
     startPlay: ->
-      return if @collection.length is 0
+      if @collection.length is 0
+        _.delay =>
+          @startPlay()
+        , 10
+        return
       model = @collection.at(0)
       @model.set model.toJSON()
+
       url = (model.get 'stream_url') + '?client_id=e90b73852966e0f8a83b4c4e39d90ab5'
       if @screen?
         @screen.kill()
