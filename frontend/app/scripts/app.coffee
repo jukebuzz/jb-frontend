@@ -27,9 +27,6 @@ define (require, exports, module)->
       common.audio = audio
       common.trackCollection = new TrackCollection
       common.trackCollection.makeRefresh()
-      audio.done (player)->
-        # player.load 'https://api.soundcloud.com/tracks/291/stream?client_id=e90b73852966e0f8a83b4c4e39d90ab5'
-        # player.play()
 
       # Init google analitics
       common.ga = new GAConstructor preprocess.GA, Backbone

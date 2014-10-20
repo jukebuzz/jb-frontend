@@ -53,12 +53,11 @@ define (require, exports, module)->
 
     onCollectionChangeActive: (model, value)->
       return unless value
-      stream = model.get 'stream_url'
       common.audio.done (player)->
         model.once 'change:active', -> player.pause()
         player.pause()
         _.delay ->
-          player.load stream + '?client_id=e90b73852966e0f8a83b4c4e39d90ab5'
+          player.load model.get 'stream_url_sc'
           player.play()
         , 100
 

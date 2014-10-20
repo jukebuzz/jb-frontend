@@ -1,6 +1,7 @@
 define (require, exports, module)->
   Backbone = require "backbone"
   require "epoxy"
+  require "preprocess"
 
   TrackModel = Backbone.Epoxy.Model.extend
 
@@ -16,6 +17,8 @@ define (require, exports, module)->
       added: false
 
     computeds:
+      stream_url_sc: ->
+        (@get 'stream_url') + '?client_id=' + PREPROCESS.SC
       durationString:
         deps: ['duration']
         get: (duration)->

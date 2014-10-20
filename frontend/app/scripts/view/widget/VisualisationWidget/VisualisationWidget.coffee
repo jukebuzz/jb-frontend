@@ -36,46 +36,51 @@ define (require, exports, module)->
       audio.done (player)=>
         @player = player
         @startPlay()
-        @player.on 'ended', =>
-          common.api.post_playlist_id_next(@room_id).done (data)=>
-            @collection.setData data
-            @startPlay()
+        @player.on 'ended', => @postTrackPlayed()
+
+    postTrackPlayed: ->
+      common.api.post_playlist_id_next(@room_id)
+        .done (data)=>
+          @collection.setData data
+          @startPlay()
+        .fail => _.delay =>
+          @postTrackPlayed()
+        , 2000
+
+    asyncGetNext: (async = $.Deferred())->
+      if @collection.length > 0
+        async.resolve @collection.at 0
+      else
+        _.delay =>
+          @asyncGetNext async
+        , 10000
+      async.promise()
 
     startPlay: ->
-      if @collection.length is 0
-        _.delay =>
-          @startPlay()
-        , 10
-        return
-      model = @collection.at(0)
-      @model.set model.toJSON()
+      @asyncGetNext().done (model)=>
+        @model.set model.toJSON()
+        @pausePlayer()
+        @startPlayer model.get 'stream_url_sc'
 
-      url = (model.get 'stream_url') + '?client_id=e90b73852966e0f8a83b4c4e39d90ab5'
+    pausePlayer: ->
       if @screen?
         @screen.kill()
         @screen = null
       @player.pause()
-      _.delay =>
-        @player.load url
-        @screen = new ScreenSketch @$el[0], @player.audio.audio
-      , 50
-      # _.delay =>
-        # @player.play()
-      # , 100
 
+    startPlayer: (url)->
+      _.delay =>
+          @player.load url
+          @screen = new ScreenSketch @$el[0], @player.audio.audio
+        , 50
 
     onClickClose: ->
       Backbone.trigger "vis:toggle", false
 
     onClose: ->
       $(document).off "keydown", @onKeyPress
-      audio.done (@player)=>
-        player.off 'ended'
-        # if player.playing
-        # player.pause()
-        if @screen?
-          @screen.kill()
-          @screen = null
+      @player.off 'ended'
+      @pausePlayer()
 
     onKeyPress: (e)->
       Backbone.trigger "vis:toggle", false if e.keyCode is 27
