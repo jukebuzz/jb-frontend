@@ -8,6 +8,7 @@ define (require, exports, module)->
   Page = require "view/page"
   Widget = require "view/widget"
   audio = require "utils/audio"
+  AudioAnalyser = require "utils/analyser"
   TrackCollection = require "collection/TrackCollection"
 
   GAConstructor = require "sp-utils-gaconstructor"
@@ -27,6 +28,7 @@ define (require, exports, module)->
       common.audio = audio
       common.trackCollection = new TrackCollection
       common.trackCollection.makeRefresh()
+      common.analyser = new AudioAnalyser
 
       # Init google analitics
       common.ga = new GAConstructor preprocess.GA, Backbone

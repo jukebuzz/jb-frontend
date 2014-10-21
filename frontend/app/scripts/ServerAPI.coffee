@@ -1,4 +1,4 @@
-define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
+define ["sp-utils-serverclient","utils/stub","cookies"],(ServerClient, stub ,cookie)->
 
   class ServerClientPatched extends ServerClient
     _ajax: (options, async)->
@@ -77,6 +77,7 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
     get_playlist_id_items: (id)->
       @get {
         url: "/api/playlists/#{id}/items"
+        xstub : (async)-> async.resolve stub.TRACKS
       }
 
     post_playlist_id_items: (id, soundcloud_id)->
@@ -89,6 +90,7 @@ define ["sp-utils-serverclient","cookies"],(ServerClient, cookie)->
     post_playlist_id_next: (id)->
       @post {
         url: "/api/playlists/#{id}/next"
+        xstub : (async)-> async.resolve stub.TRACKS
       }
 
 

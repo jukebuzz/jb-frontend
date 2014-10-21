@@ -1,4 +1,5 @@
 define (require)->
+  _ = require "underscore"
   NUM_PARTICLES = 150
   NUM_BANDS = 128
   SMOOTHING = 0.5
@@ -14,22 +15,16 @@ define (require)->
     @AudioContext: self.AudioContext or self.webkitAudioContext
     @enabled: @AudioContext?
 
-    constructor: ( @audio = new Audio(), @numBands = 256, @smoothing = 0.3 ) ->
+    constructor: (@numBands = 256, @smoothing = 0.3 ) ->
+      @enabled = AudioAnalyser.enabled
+      @setupAnalyser()
+      @setupAudio()
 
-      # construct audio object
-      if typeof @audio is 'string'
-
-        src = @audio
-        @audio = new Audio()
-        @audio.controls = yes
-        @audio.src = src
-
-      # setup audio context and nodes
+    setupAnalyser: ->
+      return unless AudioAnalyser.enabled
       @context = new AudioAnalyser.AudioContext()
-
       # createScriptProcessor so we can hook onto updates
       @jsNode = @context.createScriptProcessor 2048, 1, 1
-
       # smoothed analyser with n bins for frequency-domain analysis
       @analyser = @context.createAnalyser()
       @analyser.smoothingTimeConstant = @smoothing
@@ -38,34 +33,36 @@ define (require)->
       # persistant bands array
       @bands = new Uint8Array @analyser.frequencyBinCount
 
-      # circumvent http://crbug.com/112368
-      @audio.addEventListener 'canplay', =>
+    setupAudio: ->
+      @audio = new Audio
+      return unless AudioAnalyser.enabled
+      @audio.addEventListener 'canplay', => @onAudioCanplay()
 
-        # media source
-        @source = @context.createMediaElementSource @audio
+    setSrc: (src)-> @audio.src
 
-        # wire up nodes
+    getAudio: -> @audio
 
-        @source.connect @analyser
-        @analyser.connect @jsNode
+    onAudioCanplay: _.memoize ->
+      # media source
+      @source = @context.createMediaElementSource @audio
+      # wire up nodes
+      @source.connect @analyser
+      @analyser.connect @jsNode
+      @jsNode.connect @context.destination
+      @source.connect @context.destination
 
-        @jsNode.connect @context.destination
-        @source.connect @context.destination
+      # update each time the JavaScriptNode is called
+      @jsNode.onaudioprocess = =>
 
-        # update each time the JavaScriptNode is called
-        @jsNode.onaudioprocess = =>
+        # retreive the data from the first channel
+        @analyser.getByteFrequencyData @bands
 
-          # retreive the data from the first channel
-          @analyser.getByteFrequencyData @bands
-
-          # fire callback
-          @onUpdate? @bands if not @audio.paused
+        # fire callback
+        @onUpdate? @bands if not @audio.paused
 
     start: ->
-
       @audio.play()
 
     stop: ->
-
       @audio.pause()
 

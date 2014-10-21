@@ -2,7 +2,6 @@ define (require, exports, module)->
   _Widget = require "../_Widget"
   Backbone = require "backbone"
   ScreenSketch = require "utils/sketch"
-  audio = require "utils/audio"
   common = require "common"
   TrackModel = require "model/TrackModel"
 
@@ -28,15 +27,16 @@ define (require, exports, module)->
     initialize: ->
       @collection = common.trackCollection
       @model = new TrackModel
+      @analyser = common.analyser
+      @audio = @analyser.getAudio()
 
     setRoom: (@room_id)->
 
     onShow: ->
       $(document).on "keydown", @onKeyPress
-      audio.done (player)=>
-        @player = player
-        @startPlay()
-        @player.on 'ended', => @postTrackPlayed()
+      @audio.addEventListener 'ended', =>@postTrackPlayed()
+      @screen = new ScreenSketch @$el[0], @analyser
+      @startPlay()
 
     postTrackPlayed: ->
       common.api.post_playlist_id_next(@room_id)
@@ -63,24 +63,20 @@ define (require, exports, module)->
         @startPlayer model.get 'stream_url_sc'
 
     pausePlayer: ->
-      if @screen?
-        @screen.kill()
-        @screen = null
-      @player.pause()
+      @audio.pause()
 
     startPlayer: (url)->
-      _.delay =>
-          @player.load url
-          @screen = new ScreenSketch @$el[0], @player.audio.audio
-        , 50
+      @audio.src = url
+      @audio.play()
 
     onClickClose: ->
       Backbone.trigger "vis:toggle", false
 
     onClose: ->
       $(document).off "keydown", @onKeyPress
-      @player.off 'ended'
+      @audio.removeEventListener 'ended'
       @pausePlayer()
+      @screen.kill()
 
     onKeyPress: (e)->
       Backbone.trigger "vis:toggle", false if e.keyCode is 27

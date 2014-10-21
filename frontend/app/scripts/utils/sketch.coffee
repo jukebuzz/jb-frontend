@@ -1,7 +1,7 @@
 define (require)->
   Sketch = require 'sketch'
-  AudioAnalyser = require 'utils/analyser'
   Particle = require 'utils/particle'
+  common = require 'common'
 
   NUM_PARTICLES = 150
   NUM_BANDS = 128
@@ -28,7 +28,7 @@ define (require)->
   ]
 
   class SketchWrap
-    constructor: (el, MP3_PATH)->
+    constructor: (el, analyser)->
       @ctx = Sketch.create
         container: el
         particles: []
@@ -44,17 +44,12 @@ define (require)->
 
             @particles.push particle
 
-          if AudioAnalyser.enabled
-
-
-
-            @analyser = analyser = new AudioAnalyser MP3_PATH, NUM_BANDS, SMOOTHING
-
-            # update particles based on fft transformed audio frequencies
-            analyser.onUpdate = ( bands ) => particle.energy = bands[ particle.band ] / 256 for particle in @particles
+          if analyser.enabled
+            @analyser = analyser
+            @analyser.onUpdate = ( bands ) => particle.energy = bands[ particle.band ] / 256 for particle in @particles
 
             # start as soon as the audio is buffered
-            analyser.start()
+            @analyser.start()
 
             # show audio controls
             #document.body.appendChild analyser.audio
