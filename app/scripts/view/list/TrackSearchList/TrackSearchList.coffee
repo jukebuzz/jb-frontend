@@ -5,7 +5,6 @@ define (require, exports, module)->
   Backbone = require "backbone"
   common = require 'common'
   require "epoxy"
-  require "utils/soundcloud"
 
   ViewModel = Backbone.Epoxy.Model.extend
     defaults:
@@ -30,25 +29,15 @@ define (require, exports, module)->
     initialize: ->
       @viewModel = new ViewModel
       @collection = new TrackCollection
-      @collection.view = @itemView #if use backbone.epoxy < 1.2
-      window.collection = @collection
+      @collection.view = @itemView
       @listenTo @viewModel, "change:search", @onChangeSearch
       @listenTo @collection, "change:active", @onCollectionChangeActive
       @onChangeSearch(@viewModel, @viewModel.get 'search')
 
     onChangeSearch: _.throttle (model, value)->
       return unless value.length >= 3
-      SC.get '/tracks.json',{
-        streamable: true
-        filter: 'streamable'
-        order: 'hotness'
-        license: 'to_share'
-        q: value
-        'duration[to]': 500000
-        limit: 20
-        }, (result, error)=>
-          return if result is null or error
-          @collection.setSC result
+      common.api.sc_get_tracks value, 0
+      .done (data)=> @collection.setSC data
     , 700
 
     onCollectionChangeActive: (model, value)->

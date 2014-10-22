@@ -2,6 +2,7 @@ define (require)->
   ServerClient = require "sp-utils-serverclient"
   stub = require "utils/stub"
   cookies = require "cookies"
+  require "utils/soundcloud"
 
   class ServerClientPatched extends ServerClient
     _ajax: (options, async)->
@@ -95,5 +96,22 @@ define (require)->
         url: "/api/playlists/#{id}/next"
         xstub : (async)-> async.resolve stub.TRACKS
       }
+
+    sc_get_tracks: (q, page)->
+      async = $.Deferred()
+      SC.get '/tracks.json',{
+        streamable: true
+        filter: 'streamable'
+        order: 'hotness'
+        license: 'to_share'
+        q
+        'duration[to]': 500000
+        limit: 20
+      }, (result, error)->
+        if result? and not error
+          async.resolve result
+        else
+          async.reject()
+      async.promise()
 
 
