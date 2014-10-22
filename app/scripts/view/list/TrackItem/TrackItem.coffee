@@ -10,6 +10,7 @@ define (require, exports, module)->
       title: '[data-js-title]'
       duration: '[data-js-duration]'
       artwork: '[data-js-artwork]'
+      scLogo: '[data-js-sc]'
 
     bindings:
       ':el': 'classes: {first: isFirst}'
@@ -17,6 +18,7 @@ define (require, exports, module)->
       '@ui.artist': 'text: artist'
       '@ui.title': 'text: title'
       '@ui.duration': 'text: durationString'
+      '@ui.scLogo': 'attr: {href: permalink_url}'
       '@ui.artwork': 'attr:{src: artwork_url}'
 
     computeds:

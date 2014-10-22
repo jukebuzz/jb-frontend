@@ -12,6 +12,7 @@ define (require, exports, module)->
       duration: 0
       soundcloud_id: ""
       stream_url: ""
+      permalink_url: ""
       number: 0
       active: false
       added: false
@@ -31,4 +32,5 @@ define (require, exports, module)->
     parse:(r)->
       if r.user?
         r.artist = r.user.username
-      r
+      _.pick r, _.keys @defaults
+

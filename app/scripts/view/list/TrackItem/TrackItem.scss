@@ -48,6 +48,12 @@
     margin-right: 10px;
     color: #aaa;
   }
+  .track_item__sclogo{
+    @extend .img_main_sc-logo;
+    display: inline-block;
+    margin-top: 7px;
+    margin-right: 5px;
+  }
   &:hover{
     background-color: rgba(244, 220, 176, 0.5);
     // .track_item__duration{
