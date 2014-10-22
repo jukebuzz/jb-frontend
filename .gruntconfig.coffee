@@ -1,6 +1,6 @@
 module.exports =
   app: "app"
-  dist: "../public"
+  dist: "dist"
   tmpPath: ".tmp"
   scriptlang:"coffee" #js|coffee
   templatelang:"jade" #swig|jade
