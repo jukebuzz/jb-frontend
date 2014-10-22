@@ -16,7 +16,25 @@
       margin-top: 25px;
       padding: 5px 8px;
     }
+    .track_item__sclogo{
+      @extend .img_main_sc-logo-40;
+      margin-top: 16px;
+      margin-left: 4px;
+  }
 
+  }
+  .icon-play{
+    display: none;
+  }
+  &.first .icon-play{
+    @extend .img_index_playing;
+    display: block;
+    float: left;
+    margin-left: -76px;
+    width: 76px;
+    height: 76px;
+    background-position: 50% 100%;
+    opacity: 0.7;
   }
   font-size: 14px;
   font-family: sans-serif;
@@ -49,10 +67,10 @@
     color: #aaa;
   }
   .track_item__sclogo{
-    @extend .img_main_sc-logo;
+    @extend .img_main_sc-logo-32;
     display: inline-block;
-    margin-top: 7px;
-    margin-right: 5px;
+    margin-top: 8px;
+    margin-left: 3px;
   }
   &:hover{
     background-color: rgba(244, 220, 176, 0.5);

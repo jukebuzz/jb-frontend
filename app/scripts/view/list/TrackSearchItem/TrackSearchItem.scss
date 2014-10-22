@@ -31,10 +31,10 @@
     color: #aaa;
   }
   .track_item__sclogo{
-    @extend .img_main_sc-logo;
+    @extend .img_main_sc-logo-32;
     display: inline-block;
-    margin-top: 7px;
-    margin-right: 5px;
+    margin-top: 8px;
+    margin-left: 3px;
   }
   &:hover{
     background-color: #f4dcb0;
