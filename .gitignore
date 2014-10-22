@@ -14,3 +14,4 @@ app/bower_components
 !/app/styles/vendor/__vendor.scss
 app/scripts/view/**/*.css
 app/scripts/view/**/*.css.map
+app/styles/fonts/fontawesome-webfont.*
