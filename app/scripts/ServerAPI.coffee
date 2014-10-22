@@ -1,10 +1,13 @@
-define ["sp-utils-serverclient","utils/stub","cookies"],(ServerClient, stub ,cookie)->
+define (require)->
+  ServerClient = require "sp-utils-serverclient"
+  stub = require "utils/stub"
+  cookies = require "cookies"
 
   class ServerClientPatched extends ServerClient
     _ajax: (options, async)->
       unless options.type is 'GET'
         options.headers = {
-          'X-CSRF-Token': cookie.get('CSRF-Token')
+          'X-CSRF-Token': cookies.get('CSRF-Token')
         }
       super options, async
 
