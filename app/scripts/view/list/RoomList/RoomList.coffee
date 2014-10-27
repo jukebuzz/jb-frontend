@@ -41,10 +41,7 @@ define (require, exports, module)->
         common.user.refresh()
       common.router.navigate "!/rooms/#{id}", {trigger: true}
 
-    onRoute: (id)->
-      @collection.promiseSynced().done =>
-        item = @collection.findWhere {id: +id}
-        item.set {active: true} if item?
+    onRoute: (id)-> @collection.selectItem id
 
     onClickAdd: -> @r.add.setShow true
 

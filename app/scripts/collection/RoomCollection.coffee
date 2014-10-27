@@ -26,11 +26,17 @@ define (require, exports, module)->
       for m in @models  when m isnt model
         m.set {active:false}
 
-    selectFirst: ->
-      hasActive = (@where {active:true}).length > 0
-      return if hasActive
-      @at(0).set active: true
+    selectItem: (id)->
+      @promiseSynced().done =>
+        @activeItem = id
+        item = @findWhere {id: +id}
+        item.set {active: true} if item?
 
-
-    parse: (r)-> r.rooms
+    parse: (r)->
+      activeFound = false
+      for item in r.rooms when item.id is @activeItem
+        item.active = true
+        activeFound = true
+      delete @activeItem if activeFound
+      r.rooms
 
