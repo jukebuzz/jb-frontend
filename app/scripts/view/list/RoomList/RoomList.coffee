@@ -48,5 +48,6 @@ define (require, exports, module)->
 
     onClickAdd: -> @r.add.setShow true
 
-    onNeedUpdate: -> @collection.refresh()
+    onNeedUpdate: (data)->
+      @collection.refresh(data)
 

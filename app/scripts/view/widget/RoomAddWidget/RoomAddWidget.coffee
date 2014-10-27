@@ -45,13 +45,17 @@ define (require, exports, module)->
     onClickAdd: (e)->
       e.preventDefault()
       e.stopPropagation()
+      @addItem()
+
+    onKeypress: (e)-> @addItem() if e.keyCode is 13
+
+    addItem: ->
       name = @viewModel.get 'name'
       return unless /^[a-z0-9_]+$/.test name
       common.api.post_rooms({name}).done =>
         @reset()
         Backbone.trigger "rooms:needUpdate"
 
-    onKeypress: (e)-> @onClickAdd() if e.keyCode is 13
 
 
 
