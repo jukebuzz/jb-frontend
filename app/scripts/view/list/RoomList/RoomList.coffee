@@ -48,6 +48,10 @@ define (require, exports, module)->
 
     onClickAdd: -> @r.add.setShow true
 
-    onNeedUpdate: (data)->
-      @collection.refresh(data)
+    onNeedUpdate: (opts={})->
+      addItem = opts.addItem
+      if addItem?
+        @collection.add @collection.model::parse addItem
+      else
+        @collection.refresh()
 

@@ -20,7 +20,6 @@ define (require, exports, module)->
         @remove @models
         @add data, {parse: true}
         @defSynced.resolve()
-        # @selectFirst()
 
     onChange: (model, value)->
       return unless value

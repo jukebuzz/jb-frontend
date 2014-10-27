@@ -52,9 +52,9 @@ define (require, exports, module)->
     addItem: ->
       name = @viewModel.get 'name'
       return unless /^[a-z0-9_]+$/.test name
-      common.api.post_rooms({name}).done =>
+      common.api.post_rooms({name}).done (data)=>
         @reset()
-        Backbone.trigger "rooms:needUpdate"
+        Backbone.trigger "rooms:needUpdate", {addItem:data}
 
 
 
