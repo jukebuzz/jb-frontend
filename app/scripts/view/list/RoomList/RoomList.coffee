@@ -11,6 +11,7 @@ define (require, exports, module)->
 
     ui:
       add: "[data-js-add]"
+      list: "[data-js-list]"
 
     regions:
       add:
@@ -18,7 +19,7 @@ define (require, exports, module)->
         view: RoomAddWidget
 
     bindings:
-      "[data-js-list]": "collection: $collection"
+      "@ui.list": "collection: $collection"
 
     events:
       "click @ui.add": "onClickAdd"
@@ -47,6 +48,5 @@ define (require, exports, module)->
 
     onClickAdd: -> @r.add.setShow true
 
-    onNeedUpdate: ->
-      @collection.refresh()
+    onNeedUpdate: -> @collection.refresh()
 
