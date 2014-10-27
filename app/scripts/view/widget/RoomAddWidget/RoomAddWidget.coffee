@@ -42,7 +42,9 @@ define (require, exports, module)->
         @ui.name.focus()
       , 200
 
-    onClickAdd: ->
+    onClickAdd: (e)->
+      e.preventDefault()
+      e.stopPropagation()
       name = @viewModel.get 'name'
       return unless /^[a-z0-9_]+$/.test name
       common.api.post_rooms({name}).done =>
