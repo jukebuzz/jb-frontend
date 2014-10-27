@@ -17,7 +17,12 @@ define [
 
   class MiddlewareRouter extends Middleware
     auth:(async,args)->
-      async.resolve "auth"
+      common.checkAuth()
+        .done ->
+          async.resolve()
+        .fail ->
+          async.reject()
+      # async.promise()
 
   middleware = new MiddlewareRouter
 
@@ -27,13 +32,12 @@ define [
       "":"index"
       "!/rooms(/:id)": "rooms"
       "!/roomadd/:token": "roomAdd"
-      "!/404": "error404"
-      "*default":"default_router"
+      "*default": -> @navigate '', trigger:true
 
     index: middleware.wrap ->
       view = showPage Page.IndexPage
 
-    rooms: middleware.wrap (id)->
+    rooms: middleware.wrap "auth", (id)->
       auto_id = common.user.get 'active_room_id' unless id?
       if auto_id?
         @navigate "!/rooms/#{auto_id}", {trigger: true}
@@ -41,7 +45,7 @@ define [
       view = showPage Page.MainPage
       view.setRoom id if id?
 
-    roomAdd: middleware.wrap (token)->
+    roomAdd: middleware.wrap "room", (token)->
       common.api.post_rooms_join(token)
         .done (data)->
           Backbone.trigger "rooms:needUpdate"

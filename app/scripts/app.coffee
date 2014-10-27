@@ -33,6 +33,16 @@ define (require, exports, module)->
       # Init google analitics
       common.ga = new GAConstructor preprocess.GA, Backbone, true
 
+      common.checkAuth = ->
+        async = common.async()
+        common.user.promiseSynced().done ->
+          logedin = common.user.get "logedin"
+          if !!logedin
+            async.resolve common.user
+          else
+            async.reject()
+            common.router.navigate "", true
+        async.promise()
 
       #common.sapi = new social.SocialApi
       #  vk: new social.VKApi preprocess.social.vk.appID

@@ -5,6 +5,7 @@ define (require, exports, module)->
 
   UserModel = Backbone.Epoxy.Model.extend
 
+    synced: null
     defaults:
       uid: 0
       name: ""
@@ -15,9 +16,17 @@ define (require, exports, module)->
 
     computeds:
       avatar_url_mini: -> (@get 'avatar_url') + "&s=50"
-      logedin: -> +((@get 'email').length < 0)
+      logedin: -> +((@get 'uid').length > 0)
+
+    initialize: ->
+      @synced = $.Deferred()
+
+    promiseSynced: -> @synced.promise()
 
     refresh: ->
-      common.api.get_current_user().done (data)=> @set data
+      common.api.get_current_user()
+      .done (data)=>
+        @synced.resolve()
+        @set data
 
     #  r
